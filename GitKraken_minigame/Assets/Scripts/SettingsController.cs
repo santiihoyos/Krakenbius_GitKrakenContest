@@ -12,9 +12,6 @@ public class SettingsController : MonoBehaviour {
     [Header("Music Mixer")]
     public AudioMixer audioMixer;
 
-    [Header("Audio Resources")]
-    public AudioSource mouse_effect;
-
     private int musicState;
     private int effectsState;
 
@@ -93,6 +90,7 @@ public class SettingsController : MonoBehaviour {
 
     public void toggleMusic()
     {
+        ((AudioSource)GameObject.Find("Mouse_Effect").GetComponent<AudioSource>()).Play();
         if (musicButton.isOn)
         {
             PlayerPrefs.SetInt("music", 1);
@@ -103,13 +101,11 @@ public class SettingsController : MonoBehaviour {
             PlayerPrefs.SetInt("music", 0);
             audioMixer.SetFloat("MusicVolume", -80f);
         }
-
-        //Call AudioManager Method
-        mouse_effect.Play();
     }
 
     public void toggleEffects()
     {
+        ((AudioSource)GameObject.Find("Mouse_Effect").GetComponent<AudioSource>()).Play();
         if (effectsButton.isOn)
         {
             PlayerPrefs.SetInt("effects", 1);
@@ -120,8 +116,5 @@ public class SettingsController : MonoBehaviour {
             PlayerPrefs.SetInt("effects", 0);
             audioMixer.SetFloat("EffectsVolume", -80f);
         }
-
-        //Call AudioManager Method
-        mouse_effect.Play();
     }
 }
