@@ -1,32 +1,43 @@
 <!DOCTYPE html>
 <html>
-
   <head>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <meta name="description" content="Gitkraken minigame : ¡Minigame for GitKraken Contest!">
 
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <title>Gitkraken minigame</title>
   </head>
-
   <body>
+	<!-- HEADER -->
+	<div class="jumbotron">
+	  <div class="container">
+	    <div class="row">
+ 		<div class="col-md-8">
+	    		<h1> Gitkraken minigame</h1>
+            		<p> ¡Minigame for GitKraken Contest!</p>
+		</div>
+		<div class="col-md-4">
+		<!-- logotipo -->
+		</div>
+	    </div>
+	  </div>
+      </div>
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/santiihoyos/GitKraken_minigame">View on GitHub</a>
-
-          <h1 id="project_title">Gitkraken minigame</h1>
-          <h2 id="project_tagline">¡Minigame for GitKraken Contest!</h2>
-
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/santiihoyos/GitKraken_minigame/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/santiihoyos/GitKraken_minigame/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
+      <!-- BODY -->
+    <div class="template-wrap clear">
+      <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()" height="600px" width="960px"></canvas>
+      <br>
+      <div class="logo"></div>
+      <div class="fullscreen"><img src="TemplateData/fullscreen.png" width="38" height="38" alt="Fullscreen" title="Fullscreen" onclick="SetFullscreen(1);" /></div>
+      <div class="title">GitKraken_minigame</div>
     </div>
+
+      <!-- FOOTER -->
+
+
+
 
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
@@ -66,7 +77,22 @@
       </footer>
     </div>
 
-    
+<script
+			  src="https://code.jquery.com/jquery-2.2.3.min.js"
+			  integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="
+			  crossorigin="anonymous"></script>    
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script type='text/javascript'>
+  var Module = {
+    TOTAL_MEMORY: 268435456,
+    errorhandler: null,			// arguments: err, url, line. This function must return 'true' if the error is handled, otherwise 'false'
+    compatibilitycheck: null,
+    dataUrl: "build/Release/pruebaBuildWebGL2.data",
+    codeUrl: "build/Release/pruebaBuildWebGL2.js",
+    memUrl: "build/Release/pruebaBuildWebGL2.mem",
+  };
+</script>
+<script src="build/Release/UnityLoader.js"></script>
 
   </body>
 </html>
