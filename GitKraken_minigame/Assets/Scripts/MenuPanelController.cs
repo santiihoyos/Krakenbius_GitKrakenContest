@@ -12,7 +12,6 @@ public class MenuPanelController : MonoBehaviour {
 	//*********************************************** BUTTON RETURN MAIN MENU *****************************************************
 	public void HomeButton() 
 	{
-		((AudioSource) GameObject.Find("SoundButton").GetComponent<AudioSource>()).Play();
 		GameObject mainPanelGO = Instantiate (mainPanel) as GameObject;
 		Destroy (GameObject.Find ("SettingsPanel(Clone)"));
 		Destroy (GameObject.Find ("CreditsPanel(Clone)"));
@@ -21,7 +20,6 @@ public class MenuPanelController : MonoBehaviour {
 	//*********************************************** BUTTONS MAIN MENU *****************************************************
 	public void SettingsButton ()
 	{
-		((AudioSource) GameObject.Find("SoundButton").GetComponent<AudioSource>()).Play();
 		GameObject settingsPanelGO = Instantiate (settingsPanel) as GameObject;
         Destroy (GameObject.Find ("MainPanel(Clone)"));
 	}
@@ -31,7 +29,6 @@ public class MenuPanelController : MonoBehaviour {
 	// IN SSETTINGSPANEL
 	public void CreditsButton () 
 	{
-		((AudioSource) GameObject.Find("SoundButton").GetComponent<AudioSource>()).Play();
 		GameObject creditsPanelGO = Instantiate (creditsPanel) as GameObject;
         Destroy (GameObject.Find ("MainPanel(Clone)"));
 	}
