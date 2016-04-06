@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: eb321f48c30df2a478548c3487bb4956
+timeCreated: 1458030301
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - mainPanel: {fileID: 122294, guid: 0fdaee2479c4ce94590813d395b5dbec, type: 2}
+  - ammunitionPanel: {fileID: 110842, guid: a13c13e9dce0c7c4eacc892c0d348fad, type: 2}
+  - throwPanel: {fileID: 144698, guid: 5cc1cf686ba4faa4ba0b04f7ecd26b3e, type: 2}
+  - statusPanel: {fileID: 198262, guid: b3ce344de5d0d254ea81c10664b1b63a, type: 2}
+  - statisticsPanel: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
