@@ -3,14 +3,13 @@ using System.Collections;
 using UnityEngine.SceneManagement;
 using System;
 using System.Collections.Generic;
+using UnityEngine.Audio;
 
 public class LoadApp : MonoBehaviour {
 
 	public GameObject menuPanel;
 
-	private AudioSource soundMusicMenu;
-	private AudioSource soundButtonClick;
-	private AudioSource soundTapClick;
+    public AudioMixer audioMixer;
 
 	void Awake () 
 	{
@@ -20,6 +19,15 @@ public class LoadApp : MonoBehaviour {
 	void Start () 
 	{
         InitApp();
+        if (PlayerPrefs.GetInt("music") == 1)
+            audioMixer.SetFloat("MusicVolume", 0f);
+        else
+            audioMixer.SetFloat("MusicVolume", -80f);
+
+        if (PlayerPrefs.GetInt("effects") == 1)
+            audioMixer.SetFloat("EffectsVolume", 0f);
+        else
+            audioMixer.SetFloat("EffectsVolume", -80f);
     }
 
 	// SELECT OF PANEL LOAD

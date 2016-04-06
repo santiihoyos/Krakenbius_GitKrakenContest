@@ -5,13 +5,18 @@ using UnityEngine.SceneManagement;
 public class MenuPanelController : MonoBehaviour {
 
 	// References Panel
+    [Header("UI Panels")]
 	public GameObject mainPanel;
 	public GameObject settingsPanel;
 	public GameObject creditsPanel;
 
-	//*********************************************** BUTTON RETURN MAIN MENU *****************************************************
-	public void HomeButton() 
+    [Header("Audio Resources")]
+    public AudioSource mouse_effect;
+
+    //*********************************************** BUTTON RETURN MAIN MENU *****************************************************
+    public void HomeButton() 
 	{
+        mouse_effect.Play();
 		GameObject mainPanelGO = Instantiate (mainPanel) as GameObject;
 		Destroy (GameObject.Find ("SettingsPanel(Clone)"));
 		Destroy (GameObject.Find ("CreditsPanel(Clone)"));
@@ -20,7 +25,8 @@ public class MenuPanelController : MonoBehaviour {
 	//*********************************************** BUTTONS MAIN MENU *****************************************************
 	public void SettingsButton ()
 	{
-		GameObject settingsPanelGO = Instantiate (settingsPanel) as GameObject;
+        mouse_effect.Play();
+        GameObject settingsPanelGO = Instantiate (settingsPanel) as GameObject;
         Destroy (GameObject.Find ("MainPanel(Clone)"));
 	}
 
@@ -29,7 +35,8 @@ public class MenuPanelController : MonoBehaviour {
 	// IN SSETTINGSPANEL
 	public void CreditsButton () 
 	{
-		GameObject creditsPanelGO = Instantiate (creditsPanel) as GameObject;
+        mouse_effect.Play();
+        GameObject creditsPanelGO = Instantiate (creditsPanel) as GameObject;
         Destroy (GameObject.Find ("MainPanel(Clone)"));
 	}
 }
