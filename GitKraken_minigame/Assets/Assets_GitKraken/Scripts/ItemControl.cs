@@ -3,22 +3,21 @@ using System.Collections;
 
 public class ItemControl : MonoBehaviour {
 
-	GameObject kraken;
-	public float deathDistance = 0.5f;
+	public GameObject kraken;
+	public float deathDistance = 1f;
+	public float speed = 1f;
 	float initScale = 0.5f;
 	float finalScale = 0.2f;
 	Vector3 initPos;
 	Vector3 finalPos;
 	float timeToDie;
-	float spendTime=0;
+	float spendTime = 0;
 
 	// Use this for initialization
-	public void Init (GameObject kraken,float speed) {
-		this.kraken = kraken;
-
+	public void Start () {
 		float r = Random.Range(0f, 360f);
-		transform.position = new Vector3 (Mathf.Sqrt (50), 0, 0);
-		transform.RotateAround(new Vector3(0,0,0), Vector3.forward, r);
+		this.transform.position = new Vector3 (Mathf.Sqrt (50), 0, 0);
+		this.transform.RotateAround(new Vector3(0,0,0), Vector3.forward, r);
 		initPos = transform.position;
 
 		Vector3 direction = (kraken.transform.position - initPos);
@@ -39,5 +38,9 @@ public class ItemControl : MonoBehaviour {
 		if (spendTime >= timeToDie) {
 			Destroy (this.gameObject);
 		}
+	}
+
+	void OnCollisionEnter2D(Collision2D coll) {
+		Destroy (this.gameObject);
 	}
 }
