@@ -6,7 +6,7 @@ public class AudioManager : MonoBehaviour {
 
     public AudioSource base_1;
     public AudioSource base_2;
-    public AudioSource base_3;
+    public AudioSource menu_music;
     public AudioMixer audioMixer;
 
     void Awake()
@@ -14,7 +14,7 @@ public class AudioManager : MonoBehaviour {
     }
 	// Use this for initialization
 	void Start () {
-        base_1.Play();
+        menu_music.Play();
 	}
 	
 	// Update is called once per frame
@@ -24,7 +24,7 @@ public class AudioManager : MonoBehaviour {
         if (Input.GetKeyDown("b"))
             swapSong(2);
         if (Input.GetKeyDown("c"))
-            swapSong(3);
+            swapSong(0);
     }
 
     public void swapSong(int level)
@@ -39,10 +39,9 @@ public class AudioManager : MonoBehaviour {
                 base_2.Play();
                 audioMixer.FindSnapshot("Base_2").TransitionTo(1f);
                 break;
-            case 3:
-                base_3.Play();
-                base_3.outputAudioMixerGroup = audioMixer.FindMatchingGroups("Music_1")[0];
-                audioMixer.FindSnapshot("Base_1").TransitionTo(1f);
+            case 0:
+                menu_music.Play();
+                audioMixer.FindSnapshot("Menu").TransitionTo(1f);
                 break;
 
         }
