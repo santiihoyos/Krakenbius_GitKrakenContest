@@ -36,6 +36,8 @@ public class RankingManager : MonoBehaviour {
 
 		Transform contenedorItems = GameObject.Find ("PlayersContainer").transform;
 
+		int pos = 1;
+
 		foreach (SimpleJSON.JSONClass player in ((SimpleJSON.JSONNode)enumerator.Current).AsArray) {
 
 			Player currentPlayer=JsonUtility.FromJson(player.ToString(),typeof(Player)) as Player;
@@ -44,9 +46,11 @@ public class RankingManager : MonoBehaviour {
 
 			nuevoItem.transform.SetParent (contenedorItems, false);
 
-			nuevoItem.transform.GetChild (0).gameObject.GetComponent<Text> ().text = currentPlayer.id.ToString ().ToUpper();
+			nuevoItem.transform.GetChild (0).gameObject.GetComponent<Text> ().text = pos.ToString();
 			nuevoItem.transform.GetChild (1).gameObject.GetComponent<Text>().text = currentPlayer.nick.ToUpper();
-			nuevoItem.transform.GetChild (2).gameObject.GetComponent<Text> ().text = currentPlayer.score.ToString ().ToUpper();
+			nuevoItem.transform.GetChild (2).gameObject.GetComponent<Text> ().text = currentPlayer.score.ToString ();
+
+			pos++;
 		}
 	}
 }
