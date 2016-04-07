@@ -1,7 +1,11 @@
 ﻿using System;
 
+namespace models{
+
+[Serializable]
 public class Player {
 
+	public int id;
 	public string nick;
 	public int score;
 
@@ -10,4 +14,5 @@ public class Player {
 		this.nick = _nick;
 		this.score = _score;
 	}
+}
 }
