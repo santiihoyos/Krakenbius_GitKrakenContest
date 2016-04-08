@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
         <title>Gitkraken minigame</title>
+	<script src="http://51.254.134.174/gkgame/TemplateData/UnityProgress.js"></script>
     </head>
     <body>
 <div id="fb-root"></div>
@@ -31,9 +32,21 @@
         <!-- GAME -->
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-offset-2 col-md-8">
                     <div class="embed-responsive embed-responsive-16by9">
-                        <iframe class="embed-responsive-item" src="http://51.254.134.174/gkgame"></iframe>
+		      <canvas class="embed-responsive-item emscripten" id="canvas" oncontextmenu="event.preventDefault()" height=100%" width="100%"></canvas>
+		      <script type='text/javascript'>
+		      var Module = {
+			TOTAL_MEMORY: 268435456,
+			errorhandler: null,
+			compatibilitycheck: null,
+			dataUrl: "http://51.254.134.174/gkgame/Release/gkgame.data",
+			codeUrl: "http://51.254.134.174/gkgame/Release/gkgame.js",
+			memUrl: "http://51.254.134.174/gkgame/Release/gkgame.mem",
+		      };
+                      </script>
+
+
                     </div>
                     <div class="row">
                         <div class="col-md-1 middle-align-text">
@@ -88,15 +101,7 @@
             crossorigin="anonymous">
         </script>
 
-    <script type='text/javascript'>
-  var Module = {
-    errorhandler: null,
-    compatibilitycheck: null
-  };
-</script>
-
-
-        <script src="Release/UnityLoader.js"></script>
+        <script src="http://51.254.134.174/gkgame/Release/UnityLoader.js"></script>
         <script>
             $(document).ready( function(){
                 $("#btn_fullscreen").on("click", function() {

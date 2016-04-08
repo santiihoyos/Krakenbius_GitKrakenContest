@@ -435,10 +435,17 @@ Small Device Styles
     right: 0;
 }
 
+body{
+    color: #d8c13a;
+
+}
+
 #jumbo {
     padding-top: 0;
     padding-bottom: 0;
+    background-color: #141422;
 }
+
 
 
 
