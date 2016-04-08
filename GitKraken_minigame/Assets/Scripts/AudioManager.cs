@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour {
 
@@ -14,7 +15,16 @@ public class AudioManager : MonoBehaviour {
     }
 	// Use this for initialization
 	void Start () {
-        menu_music.Play();
+        if (SceneManager.GetActiveScene().name.Equals("MainScene"))
+        {
+            menu_music.Play();
+            audioMixer.FindSnapshot("Menu").TransitionTo(1);
+        }
+        else if (SceneManager.GetActiveScene().name.Equals("GameScene"))
+        {
+            base_1.Play();
+            audioMixer.FindSnapshot("Base_1").TransitionTo(0.2f);
+        }
 	}
 	
 	// Update is called once per frame
