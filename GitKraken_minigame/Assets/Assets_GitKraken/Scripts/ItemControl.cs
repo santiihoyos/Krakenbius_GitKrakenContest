@@ -23,6 +23,8 @@ public class ItemControl : MonoBehaviour {
 		Vector3 direction = (kraken.transform.position - initPos);
 		finalPos = kraken.transform.position - deathDistance * direction.normalized;
 		timeToDie = (initPos - finalPos).magnitude/speed;
+
+		this.transform.rotation = Quaternion.identity;
 	}
 	
 	// Update is called once per frame
@@ -35,6 +37,7 @@ public class ItemControl : MonoBehaviour {
 		//*********** FOLLOW KRAKEN ***********
 		this.transform.position = Vector3.Lerp (initPos, finalPos, spendTime / timeToDie);
 
+		//*********** DESTROY ITEM ***********
 		if (spendTime >= timeToDie) {
 			Destroy (this.gameObject);
 		}
