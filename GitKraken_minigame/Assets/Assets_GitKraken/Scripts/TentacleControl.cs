@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Linq;
+using System.Collections.Generic;
 
 public class TentacleControl : MonoBehaviour {
 
@@ -9,7 +11,11 @@ public class TentacleControl : MonoBehaviour {
 
 	void Start() {
 		tentacles = GameObject.FindGameObjectsWithTag("Tentacle");
-		print (tentacles[0].gameObject.name);
+		tentacles.OrderBy (branches => branches.activeInHierarchy).ToArray();
+
+		foreach (var item in tentacles) {
+			print (item.gameObject.name);
+		}
 	}
 
 	void OnCollisionEnter2D(Collision2D coll) {
@@ -69,7 +75,6 @@ public class TentacleControl : MonoBehaviour {
 				tentacles[i].transform.localScale = new Vector3 (1, 1, 1);
 
 				if (i <= 3) {
-					print (tentacles.Length);
 					tentacles [i].transform.GetChild (0).gameObject.SetActive (false);
 				} else {
 					tentacles [i].transform.GetChild (0).gameObject.SetActive (true);
