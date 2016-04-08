@@ -19,12 +19,7 @@ public class AudioManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown("a"))
-            swapSong(1);
-        if (Input.GetKeyDown("b"))
-            swapSong(2);
-        if (Input.GetKeyDown("c"))
-            swapSong(0);
+
     }
 
     public void swapSong(int level)
