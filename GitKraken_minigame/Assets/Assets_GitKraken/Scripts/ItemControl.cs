@@ -12,6 +12,7 @@ public class ItemControl : MonoBehaviour {
 	Vector3 finalPos;
 	float timeToDie;
 	float spendTime = 0;
+	public GameObject effect;
 
 	// Use this for initialization
 	public void Start () {
@@ -44,6 +45,13 @@ public class ItemControl : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D coll) {
+
+		if (this.transform.gameObject.tag == "Rebase") {
+			Instantiate (effect, kraken.transform.position, Quaternion.identity);
+		} else {
+			Instantiate (effect, this.transform.position, Quaternion.identity);
+		}
+
 		Destroy (this.gameObject);
 	}
 }
