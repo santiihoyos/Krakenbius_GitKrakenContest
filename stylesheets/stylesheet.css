@@ -423,3 +423,15 @@ Small Device Styles
   }
 
 }
+
+.middle-align-text {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+.bottom-align-text {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
