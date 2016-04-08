@@ -11,6 +11,15 @@
         <title>Gitkraken minigame</title>
     </head>
     <body>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
 	<!-- HEADER -->
         <nav class="navbar navbar-top navbar-inverse">  
         <div class="container-fluid">
@@ -36,7 +45,9 @@
                     <div class="embed-responsive embed-responsive-4by3">
                         <canvas class="embed-responsive-item" id="canvas" oncontextmenu="event.preventDefault()"></canvas>
                     </div>
-                    <span class="pull-right">Full screen
+                    <span class="pull-right">
+<div class="fb-like" data-href="http://feedthekraken.tk" data-layout="box_count" data-action="like" data-show-faces="true" data-share="true"></div>
+			Full screen
                     <img src="./TemplateData/fullscreen.png" width="38" height="38" alt="Fullscreen" title="Fullscreen" onclick="SetFullscreen(1);" />
                     </span>
 	        </div>
@@ -61,12 +72,12 @@ This automatic page generator is the easiest way to create beautiful pages for a
                 <br/>
                 <div class="col-xs-12 col-md-4">
                     <a href="http://www.allinbyte.com" class="thumbnail">
-                        <img src="images/logoAllinbyte.jpg" alt="logo allinbyte">
+                        <img src="images/logoAllinbyte.png" alt="logo allinbyte">
                     </a>
                 </div>
                 <div class="col-xs-12 col-md-4">
-                    <a href="http://www.allinbyte.com" class="thumbnail">
-                        <img src="images/logoAllinbyte.jpg" alt="logo allinbyte">
+                    <a href="http://www.axosoft.com" class="thumbnail">
+                        <img src="images/logoAxosoft.png" alt="logo axosoft">
                     </a>
                 </div>
                 <div class="col-xs-12 col-md-4">
@@ -94,6 +105,8 @@ This automatic page generator is the easiest way to create beautiful pages for a
         };
         </script>
         <script src="Release/UnityLoader.js"></script>
+
+
         <script src="TemplateData/UnityProgress.js"></script>
         <script
             src="https://code.jquery.com/jquery-2.2.3.min.js"
