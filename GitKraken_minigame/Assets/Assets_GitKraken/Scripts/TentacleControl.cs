@@ -9,11 +9,14 @@ public class TentacleControl : MonoBehaviour {
 
 	void Start() {
 		tentacles = GameObject.FindGameObjectsWithTag("Tentacle");
+		print (tentacles[0].gameObject.name);
 	}
 
 	void OnCollisionEnter2D(Collision2D coll) {
 
-		if (coll.gameObject.tag == "Branch") { // Yellow
+		string tentagle_collision = coll.gameObject.tag;
+
+		if (tentagle_collision == "Branch") { // Yellow
 			KrakenControl.score += scoreIncrement * 8;
 			GameObject[] tentacles = GameObject.FindGameObjectsWithTag("Tentacle");
 
@@ -24,11 +27,11 @@ public class TentacleControl : MonoBehaviour {
 				};
 			}
 
-		} else if (coll.gameObject.tag == "Commit") { // Cian
+		} else if (tentagle_collision == "Commit") { // Cian
 			KrakenControl.score += scoreIncrement;
 			this.transform.parent.localScale = new Vector3 (this.transform.parent.localScale.x, this.transform.parent.localScale.y + branchIncrease, 1);
 
-		} else if (coll.gameObject.tag == "Conflict") {	// Red	
+		} else if (tentagle_collision == "Conflict") {	// Red	
 			if (this.transform.parent.localScale.x > 1f) {
 				this.transform.parent.localScale = new Vector3 (1, this.transform.parent.localScale.y, 1);
 			} else {
@@ -36,24 +39,24 @@ public class TentacleControl : MonoBehaviour {
 				this.gameObject.SetActive (false);
 			}		
 
-		} else if (coll.gameObject.tag == "Merge") { // Purple
+		} else if (tentagle_collision == "Merge") { // Purple
 			KrakenControl.score += scoreIncrement * 5;
 			if (this.transform.parent.localScale.x == 1f) {
 				this.transform.parent.localScale = new Vector3 (this.transform.parent.localScale.x + (branchIncrease * 5), this.transform.parent.localScale.y, 1);
 			} 
 
-		} else if (coll.gameObject.tag == "Pull") { // Orange
+		} else if (tentagle_collision == "Pull") { // Orange
 			KrakenControl.score += scoreIncrement * 3;
 			this.transform.parent.localScale = new Vector3 (this.transform.parent.localScale.x, this.transform.parent.localScale.y + (branchIncrease * 3), 1);
 
-		} else if (coll.gameObject.tag == "Push") { // Green
+		} else if (tentagle_collision == "Push") { // Green
 			float calc_height = (this.transform.parent.localScale.y - 1f) * 10;
 			float calc_width = (this.transform.parent.localScale.x - 1f) * 10;
 
 			KrakenControl.score += 200 + (scoreIncrement * (int) calc_height) + (scoreIncrement * (int) calc_width);
 			this.transform.parent.localScale = new Vector3 (this.transform.parent.localScale.x, 1, 1);
 
-		} else if (coll.gameObject.tag == "Rebase") { // White
+		} else if (tentagle_collision == "Rebase") { // White
 			float calc_height = 0f;
 			float calc_width = 0f;
 
@@ -66,6 +69,7 @@ public class TentacleControl : MonoBehaviour {
 				tentacles[i].transform.localScale = new Vector3 (1, 1, 1);
 
 				if (i <= 3) {
+					print (tentacles.Length);
 					tentacles [i].transform.GetChild (0).gameObject.SetActive (false);
 				} else {
 					tentacles [i].transform.GetChild (0).gameObject.SetActive (true);
