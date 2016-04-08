@@ -16,8 +16,10 @@ public class ChangeMaterialOffset : MonoBehaviour {
     {
         Vector2 offset = mat.mainTextureOffset;
         offset += offsetSpeed * Time.deltaTime;
-        offset.x = Mathf.Clamp(offset.x, 0, 1);
-        offset.y = Mathf.Clamp(offset.y,0, 1);
+        if (Mathf.Abs(offset.x) >= 1)
+            offset.x -= Mathf.Sign(offset.x);
+        if (Mathf.Abs(offset.y) >= 1)
+            offset.y -= Mathf.Sign(offset.y);
         mat.mainTextureOffset = offset;
 	}
 }
