@@ -19,6 +19,15 @@ public class LoadApp : MonoBehaviour {
 	void Start () 
 	{
         InitApp();
+
+        if (!PlayerPrefs.HasKey("music")){
+            PlayerPrefs.SetInt("music", 1);
+        }
+        if (!PlayerPrefs.HasKey("effects"))
+        {
+            PlayerPrefs.SetInt("effects", 1);
+        }
+
         if (PlayerPrefs.GetInt("music") == 1)
             audioMixer.SetFloat("MusicVolume", 0f);
         else
