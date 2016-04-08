@@ -40,7 +40,7 @@ public class CreateItems : MonoBehaviour {
 				Instantiate (item_conflict);
 
 			count++;
-			print ("Items generados: " + count);
+
 			if (count % 20 == 0 && seconds > 0f) {
 				seconds -= 0.1f;
 				print ("Items generados: " + count + ", Uno nuevo cada " + seconds + " segundos");
