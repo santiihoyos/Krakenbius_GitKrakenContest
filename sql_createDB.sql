@@ -36,3 +36,17 @@ DEFAULT CHARACTER SET = latin1;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+--Inicialización de la base de datos a solo los 10 primeros añadir filas para aumentar la magnitud del ranking
+
+INSERT INTO `GITKRAKEN_DB`.`RANKING` (`NICK`, `SCORE`) VALUES ('---------', '0');
+INSERT INTO `GITKRAKEN_DB`.`RANKING` (`NICK`, `SCORE`) VALUES ('---------', '0');
+INSERT INTO `GITKRAKEN_DB`.`RANKING` (`NICK`, `SCORE`) VALUES ('---------', '0');
+INSERT INTO `GITKRAKEN_DB`.`RANKING` (`NICK`, `SCORE`) VALUES ('---------', '0');
+INSERT INTO `GITKRAKEN_DB`.`RANKING` (`NICK`, `SCORE`) VALUES ('---------', '0');
+INSERT INTO `GITKRAKEN_DB`.`RANKING` (`NICK`, `SCORE`) VALUES ('---------', '0');
+INSERT INTO `GITKRAKEN_DB`.`RANKING` (`NICK`, `SCORE`) VALUES ('---------', '0');
+INSERT INTO `GITKRAKEN_DB`.`RANKING` (`NICK`, `SCORE`) VALUES ('---------', '0');
+INSERT INTO `GITKRAKEN_DB`.`RANKING` (`NICK`, `SCORE`) VALUES ('---------', '0');
+INSERT INTO `GITKRAKEN_DB`.`RANKING` (`NICK`, `SCORE`) VALUES ('---------', '0');
+
