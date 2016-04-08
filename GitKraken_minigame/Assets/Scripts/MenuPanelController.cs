@@ -9,6 +9,11 @@ public class MenuPanelController : MonoBehaviour {
 	public GameObject mainPanel;
 	public GameObject settingsPanel;
 	public GameObject creditsPanel;
+    public GameObject gamePanel;
+    public GameObject rankingPanel;
+
+    [Header("AudioManager")]
+    public AudioManager audioManager;
 
     //*********************************************** BUTTON RETURN MAIN MENU *****************************************************
     public void HomeButton() 
@@ -27,13 +32,26 @@ public class MenuPanelController : MonoBehaviour {
         Destroy (GameObject.Find ("MainPanel(Clone)"));
 	}
 
-	//*********************************************** OTHER BUTTONS *****************************************************
-
-	// IN SSETTINGSPANEL
 	public void CreditsButton () 
 	{
         ((AudioSource)GameObject.Find("Mouse_Effect").GetComponent<AudioSource>()).Play();
         GameObject creditsPanelGO = Instantiate (creditsPanel) as GameObject;
         Destroy (GameObject.Find ("MainPanel(Clone)"));
 	}
+
+    public void PlayButton()
+    {
+        ((AudioSource)GameObject.Find("Mouse_Effect").GetComponent<AudioSource>()).Play();
+        ((AudioSource)GameObject.Find("Base_1").GetComponent<AudioSource>()).Play();
+        audioManager.audioMixer.FindSnapshot("Base_1").TransitionTo(0.2f);
+        GameObject creditsPanelGO = Instantiate(gamePanel) as GameObject;
+        Destroy(GameObject.Find("MainPanel(Clone)"));
+    }
+
+    public void RankingButton()
+    {
+        ((AudioSource)GameObject.Find("Mouse_Effect").GetComponent<AudioSource>()).Play();
+        GameObject creditsPanelGO = Instantiate(rankingPanel) as GameObject;
+        Destroy(GameObject.Find("MainPanel(Clone)"));
+    }
 }
