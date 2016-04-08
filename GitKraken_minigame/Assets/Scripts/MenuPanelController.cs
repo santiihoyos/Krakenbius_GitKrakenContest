@@ -42,10 +42,8 @@ public class MenuPanelController : MonoBehaviour {
     public void PlayButton()
     {
         ((AudioSource)GameObject.Find("Mouse_Effect").GetComponent<AudioSource>()).Play();
-        ((AudioSource)GameObject.Find("Base_1").GetComponent<AudioSource>()).Play();
-        audioManager.audioMixer.FindSnapshot("Base_1").TransitionTo(0.2f);
-        GameObject creditsPanelGO = Instantiate(gamePanel) as GameObject;
         Destroy(GameObject.Find("MainPanel(Clone)"));
+        SceneManager.LoadScene("GameScene");
     }
 
     public void RankingButton()
