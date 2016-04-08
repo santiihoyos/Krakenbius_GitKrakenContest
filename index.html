@@ -13,8 +13,7 @@
 
 
 	<!-- HEADER -->
-        <nav class="navbar navbar-top">  
-        <div class="container-fluid">
+
 	    <div id="jumbo" class="jumbotron">
                 <div class="row">
                     <div class="hidden-sm hidden-xs col-md-2"><img class="img-responsive" src="images/pixelKrakenGreen.png"></div>
@@ -25,15 +24,14 @@
                     <div class="hidden-sm hidden-xs col-md-2"><img class="img-responsive" src="images/pixelKrakenRed.png"></div>
                 </div>
             </div>
-        </div>
-       </nav>
+
         <!-- MENU -->
 
 
         <!-- GAME -->
-        <div class="container-fluid"  style="blackground-color: black">
+        <div class="container-fluid">
             <div class="row">
-                <div class="col-md-offset-2 col-md-8">
+                <div class="col-md-12">
                     <div class="embed-responsive embed-responsive-16by9">
                         <iframe class="embed-responsive-item" src="http://51.254.134.174/gkgame"></iframe>
                     </div>
@@ -43,24 +41,12 @@
                         <div class="col-md-1 middle-align-text">
                     <span><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://feedthecraken.tk" data-text="share this!" data-hashtags="FeedTheKraken">Tweet!</a></span> </div>
                     <div class="col-md-offset-8 col-md-2">
-                    Full Screen<img src="./TemplateData/fullscreen.png" width="38" height="38" alt="Fullscreen" title="Fullscreen" onclick="SetFullscreen(1);" /></div>
+                    Full Screen<img id="btn_fullscreen" src="./TemplateData/fullscreen.png" width="38" height="38" alt="Full" title="Full" /></div>
                     </div>
 	        </div>
             </div>
         </div>
 	<!-- MAIN -->
-        <div class="container">
-	    <h3>	
-	        <a id="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages" aria-hidden="true">
-                    <span aria-hidden="true" class="octicon octicon-link"></span>
-                </a>
-                Welcome to GitHub Pages.
-            </h3>
-	    <p>
-This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here 
-<a href="https://guides.github.com/features/mastering-markdown/">using GitHub Flavored Markdown</a>, select a template crafted by a designer, and publish. After your page is generated, you can check out the new <code>gh-pages</code> branch locally. If you’re using GitHub Desktop, simply sync your repository and you’ll see the new branch.
-	    </p>
-        </div>
         <!-- FOOTER  -->
         <nav class="navbar navbar-inverse">
             <div class="row">
@@ -72,7 +58,7 @@ This automatic page generator is the easiest way to create beautiful pages for a
                 </div>
                 <div class="col-xs-12 col-md-offset-4 col-md-4">
                     <a href="http://www.axosoft.com">
-                        <img class="img-responsive" src="images/logoAxosoft.png" alt="logo axosoft">
+                        <img class="img-responsive" src="images/logoAxosoft.png" alt="logo axosoft"  style="background-color: white">
                     </a>
                 </div>
             </div>
@@ -100,6 +86,25 @@ This automatic page generator is the easiest way to create beautiful pages for a
             src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
             integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" 
             crossorigin="anonymous">
-        </script>  
+        </script>
+
+    <script type='text/javascript'>
+  var Module = {
+    errorhandler: null,
+    compatibilitycheck: null
+  };
+</script>
+
+
+        <script src="Release/UnityLoader.js"></script>
+        <script>
+            $(document).ready( function(){
+                $("#btn_fullscreen").on("click", function() {
+                     console.log("pasamos a pantalla completa");
+                     SetFullscreen(1);
+                });
+
+            });
+        </script>
     </body>
 </html>
