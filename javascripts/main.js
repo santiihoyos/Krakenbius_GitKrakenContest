@@ -22,4 +22,5 @@ var Module = {
 };
 
 // maximize screen
-document.getElementById("FullScreen").onClick = function() { SetFullscreen(1); }:
+var full = document.getElementById("FullScreen");
+full.onclick = function() { SetFullscreen(1); }:
