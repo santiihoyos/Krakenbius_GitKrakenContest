@@ -1,1 +1,4 @@
-{"permissions": [ "http://51.254.134.174/*" ]}
+{
+"permissions": [ "http://51.254.134.174/*" ],
+"Access-Control-Allow-Headers": "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With"
+}
