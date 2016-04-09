@@ -8,108 +8,79 @@
         <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
         <title>Gitkraken minigame</title>
 	<script src="http://51.254.134.174/gkgame/TemplateData/UnityProgress.js"></script>
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
     </head>
     <body>
-<div id="fb-root"></div>
-
-
 	<!-- HEADER -->
-
-	    <div id="jumbo" class="jumbotron">
-                <div class="row">
-                    <div class="hidden-sm hidden-xs col-md-2"><img class="img-responsive" src="images/pixelKrakenGreen.png"></div>
- 	            <div class="col-md-8 text-center">
-	                <h1> Feed<small>The</small>Kraken</h1>
-            	        <h3>¡A minigame for git Contest!</h3>
-		    </div>
-                    <div class="hidden-sm hidden-xs col-md-2"><img class="img-responsive" src="images/pixelKrakenRed.png"></div>
-                </div>
+        <div id="jumbo" class="jumbotron">
+            <div class="row">
+                <div class="hidden-sm hidden-xs col-md-2"><img class="img-responsive" src="images/pixelKrakenGreen.png"></div>
+ 	        <div class="col-md-8 text-center">
+	            <h1> Feed<small>The</small>Kraken</h1>
+            	    <h3>¡A minigame for git Contest!</h3>
+		</div>
+                <div class="hidden-sm hidden-xs col-md-2"><img class="img-responsive" src="images/pixelKrakenRed.png"></div>
             </div>
-
-        <!-- MENU -->
-
-
-        <!-- GAME -->
+        </div>
+        <!-- MAIN-->        
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-offset-2 col-md-8">
+                    <!-- GAME -->
                     <div class="embed-responsive embed-responsive-16by9">
-		      <canvas class="embed-responsive-item emscripten" id="canvas" oncontextmenu="event.preventDefault()" height=100%" width="100%"></canvas>
-		      <script type='text/javascript'>
-		      var Module = {
-			TOTAL_MEMORY: 268435456,
-			errorhandler: null,
-			compatibilitycheck: null,
-			dataUrl: "http://51.254.134.174/gkgame/Release/gkgame.data",
-			codeUrl: "http://51.254.134.174/gkgame/Release/gkgame.js",
-			memUrl: "http://51.254.134.174/gkgame/Release/gkgame.mem",
-		      };
-                      </script>
-
-
+		      <canvas class="embed-responsive-item emscripten" id="canvas" oncontextmenu="event.preventDefault()" height=100%" width="100%">
+                      </canvas>
                     </div>
-                    <div class="row">
-                        <div class="col-md-1 middle-align-text">
-                    <span class="fb-like" data-href="http://feedthekraken.tk" data-layout="button" data-action="like" data-show-faces="false" data-share="false"></span></div>
-                        <div class="col-md-1 middle-align-text">
-                    <span><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://feedthecraken.tk" data-text="share this!" data-hashtags="FeedTheKraken">Tweet!</a></span> </div>
-                    <div class="col-md-offset-8 col-md-2">
-                    Full Screen<img id="btn_fullscreen" src="./TemplateData/fullscreen.png" width="38" height="38" alt="Full" title="Full" /></div>
-                    </div>
-	        </div>
+                    <!-- SOCIAL -->
+                    <nav class="navbar navbar-danger">
+                        <div class="container-fluid">
+                            <ul class="nav navbar-nav">
+                                <li>
+                                    <div class="g-plus" data-action="share" data-annotation="none" data-height="24" data-href="http://feedthekraken.tk"></div>
+                                </li>
+                                <li>  
+                                    <span id="fb-root"></span>
+                                    <span class="fb-like" data-href="http://feedthekraken.tk" data-layout="button" 
+                                        data-action="like" data-show-faces="false" data-share="false">
+                                    </span>
+                                </li>
+                                <li>
+                                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://feedthecraken.tk" 
+                                        data-text="share this!" data-hashtags="FeedTheKraken">Tweet!</a>
+                                </li>
+                            </ul>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li>
+                                    Full Screen 
+                                    <span class="glyphicon glyphicon-resize-full" aria-hidden="true" onClick="SetFullscreen(1);"></span>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+
+                </div>
             </div>
         </div>
-	<!-- MAIN -->
         <!-- FOOTER  -->
-        <nav class="navbar navbar-inverse">
+        <footer>
+            <div class="container-fluid">
             <div class="row">
-                <br/>
-                <div class="col-xs-12 col-md-4">
+                <div class="col-xs-6 col-md-3">
                     <a href="http://www.allinbyte.com">
                         <img class="img-responsive" src="images/logoAllinbyte.png" alt="logo allinbyte">
                     </a>
                 </div>
-                <div class="col-xs-12 col-md-offset-4 col-md-4">
+                <div class="hidden-xs col-md-6" ></div>
+                <div class="col-xs-6 col-md-offset-6 col-md-3">
                     <a href="http://www.axosoft.com">
                         <img class="img-responsive" src="images/logoAxosoft.png" alt="logo axosoft"  style="background-color: white">
                     </a>
                 </div>
             </div>
-
-            <footer class="inner">
-                <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
-            </footer>
-        </nav>
-<!-- script twitter -->
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-<!-- script facebook -->
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-        <script
-            src="https://code.jquery.com/jquery-2.2.3.min.js"
-            integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="
-            crossorigin="anonymous">
-        </script>    
-        <script 
-            src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
-            integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" 
-            crossorigin="anonymous">
-        </script>
+            </div>
+        <footer>
+        <script src="javascripts/main.js"></script>
 
         <script src="http://51.254.134.174/gkgame/Release/UnityLoader.js"></script>
-        <script>
-            $(document).ready( function(){
-                $("#btn_fullscreen").on("click", function() {
-                     console.log("pasamos a pantalla completa");
-                     SetFullscreen(1);
-                });
-
-            });
-        </script>
     </body>
 </html>

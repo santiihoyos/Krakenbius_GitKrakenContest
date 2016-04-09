@@ -437,7 +437,7 @@ Small Device Styles
 
 body{
     color: #d8c13a;
-
+    background-color: #262633;
 }
 
 #jumbo {
@@ -446,6 +446,11 @@ body{
     background-color: #141422;
 }
 
+#canvas {
+    border: 1px solid white;
+}
 
+footer {
+    background-color: #141422;
 
 
