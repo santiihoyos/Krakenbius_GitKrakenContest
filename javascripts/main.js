@@ -21,3 +21,5 @@ var Module = {
     memUrl: "http://51.254.134.174/gkgame/Release/gkgame.mem",
 };
 
+// maximize screen
+document.getElementById("FullScreen").onClick = function() { SetFullscreen(1); }:
