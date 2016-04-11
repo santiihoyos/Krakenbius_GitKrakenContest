@@ -10,10 +10,8 @@ var Module = {
     codeUrl: "http://51.254.134.174/gkgame/Release/gkgame.js",
     memUrl: "http://51.254.134.174/gkgame/Release/gkgame.mem",
 };
-document.addEventListener('DOMContentLoaded', function(){ 
-    // maximize screen
-    var full = document.getElementById("FullScreen");
-    full.onclick = function() { SetFullscreen(1); };
-}, false);
+
+var full = document.getElementById("FullScreen");
+full.onclick = function() { console.log("maximize");SetFullscreen(1); console.log("end maximize");};
 
 
