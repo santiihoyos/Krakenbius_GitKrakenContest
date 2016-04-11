@@ -6,8 +6,9 @@ using UnityEngine.UI;
 public class DialogRankingController : MonoBehaviour {
 
 	public Text dialogText;
-	public Text newNick;
-	public GameObject contenedor;
+	public InputField newNick;
+    public Button sendButton;
+    public GameObject contenedor;
 	RankingManager manager;
 	int score;
 
@@ -20,6 +21,10 @@ public class DialogRankingController : MonoBehaviour {
 //		FinalOfMatch ();
 	}
 
+    public void CheckValidNick()
+    {
+        sendButton.interactable=!string.IsNullOrEmpty(newNick.text);
+    }
 	public void FinalOfMatch(){
 		StartCoroutine (manager.CheckInRankingReq(score,contenedor));
 	}
