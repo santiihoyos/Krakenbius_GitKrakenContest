@@ -14,7 +14,7 @@ public class RankingManager : MonoBehaviour {
 
 		StartCoroutine (LoadRanking());
 
-		StartCoroutine (CheckInRankingReq(300));
+		StartCoroutine (CheckInRankingReq(200));
 
 		//StartCoroutine (UpdateRanking("Amo Santi",300));
 	}
