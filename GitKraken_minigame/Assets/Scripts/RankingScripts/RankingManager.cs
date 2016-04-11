@@ -62,7 +62,7 @@ public class RankingManager : MonoBehaviour {
 	}
 		
 
-	IEnumerator CheckInRankingReq(int score) {
+	public IEnumerator CheckInRankingReq(int score) {
 
 		WWWForm formulario = new WWWForm ();
 		formulario.AddField ("score_player", score);
@@ -89,7 +89,7 @@ public class RankingManager : MonoBehaviour {
 	}
 
 
-	IEnumerator UpdateRanking(string nick, int score) {
+	public IEnumerator UpdateRanking(string nick, int score) {
 
 		WWWForm formulario = new WWWForm ();
 		formulario.AddField ("nick_player", nick);
