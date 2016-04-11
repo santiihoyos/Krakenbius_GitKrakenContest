@@ -8,10 +8,12 @@ public class TentacleControl : MonoBehaviour {
 	float branchIncrease = 0.1f;
 	int scoreIncrement = 100;
 	public GameObject gameOver;
+	GameObject rankingManager;
 
 	void Start() {
 		tentacles = GameObject.FindGameObjectsWithTag("Tentacle");
 		Array.Sort (tentacles, CompareObNames);
+		rankingManager = GameObject.Find ("rankingManager");
 	}
 
 	void OnCollisionEnter2D(Collision2D coll) {
@@ -19,7 +21,7 @@ public class TentacleControl : MonoBehaviour {
 		string tentagle_collision = coll.gameObject.tag;
 
 		if (tentagle_collision == "Branch") { // Yellow
-			KrakenControl.score += scoreIncrement * 8;
+			krakenScripts.KrakenControl.score += scoreIncrement * 8;
 
 			foreach (var item in tentacles) {
 				if (item.transform.GetChild (0).gameObject.activeSelf == false) {
@@ -29,7 +31,7 @@ public class TentacleControl : MonoBehaviour {
 			}
 
 		} else if (tentagle_collision == "Commit") { // Cian
-			KrakenControl.score += scoreIncrement;
+			krakenScripts.KrakenControl.score += scoreIncrement;
 			this.transform.parent.localScale = new Vector3 (this.transform.parent.localScale.x, this.transform.parent.localScale.y + branchIncrease, 1);
 
 		} else if (tentagle_collision == "Conflict") {	// Red	
@@ -52,20 +54,20 @@ public class TentacleControl : MonoBehaviour {
 			}		
 
 		} else if (tentagle_collision == "Merge") { // Purple
-			KrakenControl.score += scoreIncrement * 5;
+			krakenScripts.KrakenControl.score += scoreIncrement * 5;
 			if (this.transform.parent.localScale.x == 1f) {
 				this.transform.parent.localScale = new Vector3 (this.transform.parent.localScale.x + (branchIncrease * 5), this.transform.parent.localScale.y, 1);
 			} 
 
 		} else if (tentagle_collision == "Pull") { // Orange
-			KrakenControl.score += scoreIncrement * 3;
+			krakenScripts.KrakenControl.score += scoreIncrement * 3;
 			this.transform.parent.localScale = new Vector3 (this.transform.parent.localScale.x, this.transform.parent.localScale.y + (branchIncrease * 3), 1);
 
 		} else if (tentagle_collision == "Push") { // Green
 			float calc_height = (this.transform.parent.localScale.y - 1f) * 10;
 			float calc_width = (this.transform.parent.localScale.x - 1f) * 10;
 
-			KrakenControl.score += 200 + (scoreIncrement * (int) calc_height) + (scoreIncrement * (int) calc_width);
+			krakenScripts.KrakenControl.score += 200 + (scoreIncrement * (int) calc_height) + (scoreIncrement * (int) calc_width);
 			this.transform.parent.localScale = new Vector3 (this.transform.parent.localScale.x, 1, 1);
 
 		} else if (tentagle_collision == "Rebase") { // White
@@ -86,14 +88,16 @@ public class TentacleControl : MonoBehaviour {
 					tentacles [i].transform.GetChild (0).gameObject.SetActive (false);
 				}
 			}
-			KrakenControl.score += 500 + (scoreIncrement * (int) calc_height) + (scoreIncrement * (int) calc_width);
+			krakenScripts.KrakenControl.score += 500 + (scoreIncrement * (int) calc_height) + (scoreIncrement * (int) calc_width);
 		}
 
-		print (KrakenControl.score);
+		print (krakenScripts.KrakenControl.score);
 	}
 
     private void GameOver()
     {
+
+		rankingManager.GetComponent<DialogRankingController>().FinalOfMatch ();
         Instantiate(gameOver);
         GameObject.FindObjectOfType<AudioManager>().PitchBase();
         GameObject.FindObjectOfType<HUDPanelController>().GameOver();
