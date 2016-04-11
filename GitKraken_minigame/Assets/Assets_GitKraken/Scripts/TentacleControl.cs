@@ -20,7 +20,6 @@ public class TentacleControl : MonoBehaviour {
 
 		if (tentagle_collision == "Branch") { // Yellow
 			KrakenControl.score += scoreIncrement * 8;
-			GameObject[] tentacles = GameObject.FindGameObjectsWithTag("Tentacle");
 
 			foreach (var item in tentacles) {
 				if (item.transform.GetChild (0).gameObject.activeSelf == false) {
