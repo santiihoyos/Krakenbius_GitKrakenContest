@@ -1,21 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System.Linq;
-using System.Collections.Generic;
+using System;
 
 public class TentacleControl : MonoBehaviour {
 
 	GameObject[] tentacles;
 	float branchIncrease = 0.1f;
 	int scoreIncrement = 100;
+	public GameObject gameOver;
 
 	void Start() {
 		tentacles = GameObject.FindGameObjectsWithTag("Tentacle");
-		tentacles.OrderBy (branches => branches.activeInHierarchy).ToArray();
-
-		foreach (var item in tentacles) {
-			print (item.gameObject.name);
-		}
+		Array.Sort (tentacles, CompareObNames);
 	}
 
 	void OnCollisionEnter2D(Collision2D coll) {
@@ -26,9 +22,9 @@ public class TentacleControl : MonoBehaviour {
 			KrakenControl.score += scoreIncrement * 8;
 			GameObject[] tentacles = GameObject.FindGameObjectsWithTag("Tentacle");
 
-			for (int i = tentacles.Length -1; i > 0; i--) {
-				if (tentacles [i].transform.GetChild (0).gameObject.activeSelf == false) {
-					tentacles [i].transform.GetChild (0).gameObject.SetActive (true);
+			foreach (var item in tentacles) {
+				if (item.transform.GetChild (0).gameObject.activeSelf == false) {
+					item.transform.GetChild (0).gameObject.SetActive (true);
 					break;
 				};
 			}
@@ -43,6 +39,17 @@ public class TentacleControl : MonoBehaviour {
 			} else {
 				this.transform.parent.localScale = new Vector3 (1, 1, 1);
 				this.gameObject.SetActive (false);
+				bool any_active = false;
+				print (any_active);
+				for (int i = 0; i < tentacles.Length; i++) {
+					if (tentacles [i].transform.GetChild (0).gameObject.activeSelf == true) {
+						any_active = true;
+						break;
+					}
+				}
+				if (!any_active) {
+					Instantiate (gameOver);
+				}
 			}		
 
 		} else if (tentagle_collision == "Merge") { // Purple
@@ -75,14 +82,19 @@ public class TentacleControl : MonoBehaviour {
 				tentacles[i].transform.localScale = new Vector3 (1, 1, 1);
 
 				if (i <= 3) {
-					tentacles [i].transform.GetChild (0).gameObject.SetActive (false);
-				} else {
 					tentacles [i].transform.GetChild (0).gameObject.SetActive (true);
+				} else {
+					tentacles [i].transform.GetChild (0).gameObject.SetActive (false);
 				}
 			}
 			KrakenControl.score += 500 + (scoreIncrement * (int) calc_height) + (scoreIncrement * (int) calc_width);
 		}
 
 		print (KrakenControl.score);
+	}
+
+	int CompareObNames( GameObject x, GameObject y)
+	{
+		return x.name.CompareTo(y.name);
 	}
 }
