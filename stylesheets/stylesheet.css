@@ -28,9 +28,19 @@ color: #ff1698;
 }
 
 #canvas {
-    border: 1px solid white;
+    border: 1px solid #141422;
 }
 
 #footer {
     background-color: #141422;
+    border: 1px solid  #141422;
+}
+
+.navbar-default {
+    border: 1px solid  #141422;
+    padding: 0;
+    margin: 0;
+}
+
+
 
