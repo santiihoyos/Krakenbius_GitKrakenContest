@@ -1,4 +1,4 @@
-# >> Feed The Kraken -- Gitkraken Contest <<
+# >> KRAKENBIUS -- Gitkraken Contest <<
 
 Game made for the contest launched by Axosoft: Gitkraken Contest. #GkContest
 
