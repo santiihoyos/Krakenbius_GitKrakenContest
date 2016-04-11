@@ -23,12 +23,14 @@ public class HUDPanelController : MonoBehaviour {
 			Time.timeScale = 1;
 			isPaused = false;
 			pausePanel.SetActive(false);
+            GameObject.FindObjectOfType<AudioManager>().resumeMusic();
 		} else {
 			Time.timeScale = 0;
 			isPaused = true;
 			pausePanel.SetActive(true);
-		}
-	}
+            GameObject.FindObjectOfType<AudioManager>().pauseMusic();
+        }
+    }
 
     public void Home()
     {
