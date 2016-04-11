@@ -43,6 +43,7 @@ public class AudioManager : MonoBehaviour {
         audioMixer.FindSnapshot("Base_1_PitchDown").TransitionTo(2f);
         yield return new WaitForSeconds(2);
         base_1.Stop();
+        base_2.Stop();
     }
 
     void Update()

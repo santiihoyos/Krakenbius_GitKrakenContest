@@ -96,7 +96,8 @@ public class TentacleControl : MonoBehaviour {
     {
         Instantiate(gameOver);
         GameObject.FindObjectOfType<AudioManager>().PitchBase();
-		Destroy (GameObject.Find("Kraken"));
+        GameObject.FindObjectOfType<HUDPanelController>().GameOver();
+        Destroy (GameObject.Find("Kraken"));
     }
 
     int CompareObNames( GameObject x, GameObject y)
