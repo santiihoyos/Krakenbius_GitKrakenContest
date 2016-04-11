@@ -3,7 +3,7 @@
 
 // Module for GKGAME
 var Module = {
-    TOTAL_MEMORY: 268435456,
+    TOTAL_MEMORY: 536870912,
     errorhandler: null,
     compatibilitycheck: null,
     dataUrl: "http://51.254.134.174/gkgame/Release/gkgame.data",
