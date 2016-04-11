@@ -6,6 +6,14 @@ body{
     padding-bottom: 104px; 
 }
 
+@font-face {
+    font-family: 'neon';
+    src:  url('fonts/neon2.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 #jumbo {
     padding-top: 0;
     padding-bottom: 0;
@@ -14,7 +22,10 @@ body{
 
 }
 #jumbo h1 {
-text-shadow: 3px 3px 0px #eee, 5px 5px 0px #707070;
+text-shadow: 3px 3px 0px #51f2f5, 5px 5px 0px #f3fd00;
+font-family: "neon";
+font-size: 6em;
+color: #ff1698;
 }
 
 #canvas {
