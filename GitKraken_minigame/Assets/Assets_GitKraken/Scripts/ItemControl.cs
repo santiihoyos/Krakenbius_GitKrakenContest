@@ -47,7 +47,7 @@ public class ItemControl : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D coll) {
 
 		if (this.transform.gameObject.tag == "Rebase") {
-			Instantiate (effect, kraken.transform.position + new Vector3(0, 4f, 0), Quaternion.identity);
+			Instantiate (effect, kraken.transform.position + new Vector3(0, 3.5f, 1f), Quaternion.identity);
 		} else {
 			Instantiate (effect, this.transform.position, Quaternion.identity);
 		}

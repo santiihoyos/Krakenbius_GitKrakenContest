@@ -35,9 +35,9 @@ public class CreateItems : MonoBehaviour {
 				Instantiate (item_merge);
 			else if (r >= 56 && r <= 60)
 				Instantiate (item_branch);
-			else if (r >= 61 && r <= 65)
+			else if (r >= 61 && r <= 63)
 				Instantiate (item_rebase);
-			else if (r >= 66 && r <= 100)
+			else if (r >= 64 && r <= 100)
 				Instantiate (item_conflict);
 
 
