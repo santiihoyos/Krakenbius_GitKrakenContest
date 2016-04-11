@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 
+namespace krakenScripts{
 public class KrakenControl : MonoBehaviour {
 
 	public static int score;
@@ -35,11 +36,14 @@ public class KrakenControl : MonoBehaviour {
 
 	}
 
-	void RotateLeft() {		
-		kraken.gameObject.transform.Rotate (Vector3.forward * 200f * Time.deltaTime);
+	void RotateLeft() {	
+		if (kraken != null)	
+			kraken.gameObject.transform.Rotate (Vector3.forward * 200f * Time.deltaTime);
 	}
 
-	void RotateRight() {		
-		kraken.gameObject.transform.Rotate (Vector3.back * 200f * Time.deltaTime);
+	void RotateRight() {	
+		if (kraken != null)
+			kraken.gameObject.transform.Rotate (Vector3.back * 200f * Time.deltaTime);
 	}
+}
 }

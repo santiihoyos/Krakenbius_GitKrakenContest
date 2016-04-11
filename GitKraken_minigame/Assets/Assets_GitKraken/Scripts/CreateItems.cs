@@ -41,7 +41,7 @@ public class CreateItems : MonoBehaviour {
 				Instantiate (item_conflict);
 
 
-			if (KrakenControl.score >= 200 * Mathf.Pow(2, level) && seconds > 0f) {
+			if (krakenScripts.KrakenControl.score >= 200 * Mathf.Pow(2, level) && seconds > 0f) {
 				level++;
 				seconds -= 0.1f;
 				print ("Nuevo nivel!! Item cada " + seconds + " segundos");

@@ -8,21 +8,24 @@ public class DialogRankingController : MonoBehaviour {
 	public Text dialogText;
 	public Text newNick;
 	public GameObject contenedor;
-	public RankingManager manager;
+	RankingManager manager;
 	int score;
 
 	void Start(){
-		RankingManager manager = new RankingManager ();
-		score= 
+		manager = new RankingManager ();
+		score = krakenScripts.KrakenControl.score;
+
+//		//Test
+//		score = 500;
+//		FinalOfMatch ();
 	}
 
-	public void FinalOfMatch(int score, Text testPos){
-
-		StartCoroutine (manager.CheckInRankingReq(score));
+	public void FinalOfMatch(){
+		StartCoroutine (manager.CheckInRankingReq(score,contenedor));
 	}
 
-	public void OkButtonClick(Text nick){
-		StartCoroutine (manager.UpdateRanking());
+	public void OkButtonClick(){
+		StartCoroutine (manager.UpdateRanking(newNick.text,contenedor));
 	}
 
 	public void CancelButtonClick(){
