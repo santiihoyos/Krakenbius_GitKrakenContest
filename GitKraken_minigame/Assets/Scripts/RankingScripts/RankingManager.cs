@@ -13,10 +13,6 @@ public class RankingManager : MonoBehaviour {
 	void Start(){
 
 		StartCoroutine (LoadRanking());
-
-		StartCoroutine (CheckInRankingReq(200));
-
-		//StartCoroutine (UpdateRanking("Amo Santi",300));
 	}
 		
 
@@ -62,10 +58,10 @@ public class RankingManager : MonoBehaviour {
 	}
 		
 
-	IEnumerator CheckInRankingReq(int score) {
+	public IEnumerator CheckInRankingReq(int score, GameObject dialog) {
 
 		WWWForm formulario = new WWWForm ();
-		formulario.AddField ("score_player", score);
+		formulario.AddField ("score_player", krakenScripts.KrakenControl.score);
 
 		UnityWebRequest www = UnityWebRequest.Post("http://51.254.134.174/webservices/gitkraken/ranking/CheckInRanking.php",formulario);
 
@@ -76,24 +72,29 @@ public class RankingManager : MonoBehaviour {
 		}
 		else {
 			
-
-			DrawDialog (System.Convert.ToInt32(www.downloadHandler.text));
+			DrawDialog (System.Convert.ToInt32(www.downloadHandler.text),dialog);
 		}
 	}
 
 
-	public void DrawDialog(int posEnRanking){
+	public void DrawDialog(int posEnRanking,GameObject dialog){
 	
-		print ("POSICION con ese escore= "+posEnRanking);
+		print ("POSICION con "+krakenScripts.KrakenControl.score+" ese score= "+posEnRanking);
+
+		if (posEnRanking<11) {
+			dialog.SetActive (true);
+			Text aviso = GameObject.Find ("Aviso").GetComponent<Text> ();
+			aviso.text = "YOU ARE IN THE HALL OF FAME! \nAT POSITION: "+posEnRanking;
+		}
 
 	}
 
 
-	IEnumerator UpdateRanking(string nick, int score) {
+	public IEnumerator UpdateRanking(string nick, GameObject dialog) {
 
 		WWWForm formulario = new WWWForm ();
 		formulario.AddField ("nick_player", nick);
-		formulario.AddField ("score_player", score);
+		formulario.AddField ("score_player", krakenScripts.KrakenControl.score);
 
 		UnityWebRequest www = UnityWebRequest.Post("http://51.254.134.174/webservices/gitkraken/ranking/UpdateRanking.php",formulario);
 
@@ -104,6 +105,7 @@ public class RankingManager : MonoBehaviour {
 		}
 		else {
 			print ("Resultado de la insercion= " + www.downloadHandler.text);
+			dialog.SetActive (false);
 		}
 	}
 
