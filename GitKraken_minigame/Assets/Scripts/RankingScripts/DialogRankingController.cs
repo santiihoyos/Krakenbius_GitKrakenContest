@@ -14,7 +14,7 @@ public class DialogRankingController : MonoBehaviour {
 	void Start(){
 		manager = new RankingManager ();
 		score = krakenScripts.KrakenControl.score;
-
+        contenedor.SetActive(false);
 //		//Test
 //		score = 500;
 //		FinalOfMatch ();
