@@ -84,7 +84,7 @@ public class RankingManager : MonoBehaviour {
 		if (posEnRanking<11) {
 			dialog.SetActive (true);
 			Text aviso = GameObject.Find ("Aviso").GetComponent<Text> ();
-			aviso.text = "YOU ARE IN THE HALL OF FAME! \nAT POSITION: "+posEnRanking;
+			aviso.text = "YOU ARE IN THE HALL OF FAME!\nPOSITION: "+posEnRanking;
 		}
 
 	}
