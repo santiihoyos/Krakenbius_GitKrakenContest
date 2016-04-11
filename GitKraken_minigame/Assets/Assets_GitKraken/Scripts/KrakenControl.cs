@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class KrakenControl : MonoBehaviour {
 
 	public static int score;
 	GameObject kraken;
+	public GameObject score_value;
 	bool buttonLeft_pressed;
 	bool buttonRight_pressed;
 
@@ -12,6 +14,7 @@ public class KrakenControl : MonoBehaviour {
 	void Start () {
 		kraken = GameObject.Find ("Kraken");
 		score = 0;
+		score_value.GetComponent<Text>().text = score.ToString();
 	}
 	
 	// Update is called once per frame
@@ -21,6 +24,7 @@ public class KrakenControl : MonoBehaviour {
 		} else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) {
 			RotateRight ();
 		}
+		score_value.GetComponent<Text>().text = score.ToString();
 	}
 
 	public void ButtonLeft () {
