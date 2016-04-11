@@ -9,8 +9,9 @@ public class MenuPanelController : MonoBehaviour {
 	public GameObject mainPanel;
 	public GameObject settingsPanel;
 	public GameObject creditsPanel;
-    public GameObject gamePanel;
+
     public GameObject rankingPanel;
+    public GameObject titlePanel;
 
     [Header("AudioManager")]
     public AudioManager audioManager;
@@ -19,37 +20,39 @@ public class MenuPanelController : MonoBehaviour {
     public void HomeButton() 
 	{
         ((AudioSource)GameObject.Find("Mouse_Effect").GetComponent<AudioSource>()).Play();
-        GameObject mainPanelGO = Instantiate (mainPanel) as GameObject;
-		Destroy (GameObject.Find ("SettingsPanel(Clone)"));
-		Destroy (GameObject.Find ("CreditsPanel(Clone)"));
-	}
+        mainPanel.SetActive(true);
+		settingsPanel.SetActive(false);
+        creditsPanel.SetActive(false);
+    }
 
 	//*********************************************** BUTTONS MAIN MENU *****************************************************
 	public void SettingsButton ()
 	{
         ((AudioSource)GameObject.Find("Mouse_Effect").GetComponent<AudioSource>()).Play();
-        GameObject settingsPanelGO = Instantiate (settingsPanel) as GameObject;
-        Destroy (GameObject.Find ("MainPanel(Clone)"));
-	}
+        mainPanel.SetActive(false);
+        settingsPanel.SetActive(true);
+        creditsPanel.SetActive(false);
+    }
 
 	public void CreditsButton () 
 	{
         ((AudioSource)GameObject.Find("Mouse_Effect").GetComponent<AudioSource>()).Play();
-        GameObject creditsPanelGO = Instantiate (creditsPanel) as GameObject;
-        Destroy (GameObject.Find ("MainPanel(Clone)"));
-	}
+        mainPanel.SetActive(false);
+        settingsPanel.SetActive(false);
+        creditsPanel.SetActive(true);
+    }
 
     public void PlayButton()
     {
         ((AudioSource)GameObject.Find("Mouse_Effect").GetComponent<AudioSource>()).Play();
-        Destroy(GameObject.Find("MainPanel(Clone)"));
+        //Destroy(GameObject.Find("MainPanel(Clone)"));
         SceneManager.LoadScene("GameScene");
     }
 
     public void RankingButton()
     {
         ((AudioSource)GameObject.Find("Mouse_Effect").GetComponent<AudioSource>()).Play();
-        GameObject creditsPanelGO = Instantiate(rankingPanel) as GameObject;
-        Destroy(GameObject.Find("MainPanel(Clone)"));
+        rankingPanel.SetActive(!rankingPanel.activeInHierarchy);
+        titlePanel.SetActive(!titlePanel.activeInHierarchy);
     }
 }
