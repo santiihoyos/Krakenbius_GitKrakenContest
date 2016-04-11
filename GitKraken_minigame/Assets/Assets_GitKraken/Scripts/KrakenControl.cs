@@ -36,10 +36,12 @@ public class KrakenControl : MonoBehaviour {
 	}
 
 	void RotateLeft() {		
-		kraken.gameObject.transform.Rotate (Vector3.forward * 200f * Time.deltaTime);
+        if(kraken!=null)
+		    kraken.gameObject.transform.Rotate (Vector3.forward * 200f * Time.deltaTime);
 	}
 
-	void RotateRight() {		
-		kraken.gameObject.transform.Rotate (Vector3.back * 200f * Time.deltaTime);
+	void RotateRight() {
+        if (kraken != null)
+            kraken.gameObject.transform.Rotate (Vector3.back * 200f * Time.deltaTime);
 	}
 }
