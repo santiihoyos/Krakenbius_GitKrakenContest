@@ -16,7 +16,7 @@ public class CreateItems : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		seconds = 1f;
-		level = 0;
+		level = 1;
 		StartCoroutine (GenerateItem());
 	}
 
@@ -41,7 +41,7 @@ public class CreateItems : MonoBehaviour {
 				Instantiate (item_conflict);
 
 
-			if (KrakenControl.score >= 1000 * Mathf.Pow(2, level) && seconds > 0f) {
+			if (KrakenControl.score >= 200 * Mathf.Pow(2, level) && seconds > 0f) {
 				level++;
 				seconds -= 0.1f;
 				print ("Nuevo nivel!! Item cada " + seconds + " segundos");
