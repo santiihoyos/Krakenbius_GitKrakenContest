@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class AudioManager : MonoBehaviour {
 
     public AudioSource base_1;
-    public AudioSource base_2;
     public AudioSource menu_music;
     public AudioMixer audioMixer;
 
@@ -18,7 +17,7 @@ public class AudioManager : MonoBehaviour {
         if (SceneManager.GetActiveScene().name.Equals("MainScene"))
         {
             menu_music.Play();
-            audioMixer.FindSnapshot("Menu").TransitionTo(1);
+            audioMixer.FindSnapshot("Menu").TransitionTo(1f);
         }
         else if (SceneManager.GetActiveScene().name.Equals("GameScene"))
         {
@@ -28,27 +27,14 @@ public class AudioManager : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-
+	public void PitchBase() {
+        StartCoroutine(PitchBaseCoroutine());
     }
 
-    public void swapSong(int level)
+    IEnumerator PitchBaseCoroutine()
     {
-        switch (level)
-        {
-            case 1:
-                base_1.Play();
-                audioMixer.FindSnapshot("Base_1").TransitionTo(1f);
-                break;
-            case 2:
-                base_2.Play();
-                audioMixer.FindSnapshot("Base_2").TransitionTo(1f);
-                break;
-            case 0:
-                menu_music.Play();
-                audioMixer.FindSnapshot("Menu").TransitionTo(1f);
-                break;
-
-        }
+        audioMixer.FindSnapshot("Base_1_PitchDown").TransitionTo(2f);
+        yield return new WaitForSeconds(2);
+        base_1.Stop();
     }
 }

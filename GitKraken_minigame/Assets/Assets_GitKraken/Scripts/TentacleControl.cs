@@ -48,7 +48,7 @@ public class TentacleControl : MonoBehaviour {
 					}
 				}
 				if (!any_active) {
-					Instantiate (gameOver);
+                    GameOver();
 				}
 			}		
 
@@ -93,7 +93,13 @@ public class TentacleControl : MonoBehaviour {
 		print (KrakenControl.score);
 	}
 
-	int CompareObNames( GameObject x, GameObject y)
+    private void GameOver()
+    {
+        Instantiate(gameOver);
+        GameObject.FindObjectOfType<AudioManager>().PitchBase();
+    }
+
+    int CompareObNames( GameObject x, GameObject y)
 	{
 		return x.name.CompareTo(y.name);
 	}
