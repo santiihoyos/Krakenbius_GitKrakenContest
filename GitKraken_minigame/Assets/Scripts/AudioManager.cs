@@ -12,6 +12,7 @@ public class AudioManager : MonoBehaviour {
     int audioIndex = 0;
     public AudioSource menu_music;
     public AudioMixer audioMixer;
+    private CreateItems createItems;
 
     void Awake()
     {
@@ -28,6 +29,7 @@ public class AudioManager : MonoBehaviour {
         {
             base_1.Play();
             audioMixer.FindSnapshot("Base_1").TransitionTo(0.2f);
+            createItems = GameObject.FindObjectOfType<CreateItems>();
         }
 	}
 	
@@ -48,6 +50,12 @@ public class AudioManager : MonoBehaviour {
         if (!swapping && base_1.isPlaying && base_1.time >= base_1.clip.length - 3)
         {
             StartCoroutine(SwapSongCoroutine());
+        }
+
+        if (createItems!=null)
+        {
+            base_1.pitch = Mathf.Clamp(createItems.level * 0.01f + 1, 1, 1.3f);
+            base_2.pitch = base_1.pitch;
         }
     }
     
