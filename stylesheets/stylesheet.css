@@ -1,0 +1,46 @@
+
+body{
+    color: #d8c13a;
+    background-color: #262633;
+    overflow-x: hidden;
+}
+
+@font-face {
+    font-family: 'neon';
+    src:  url('fonts/neon2.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+#jumbo {
+    padding-top: 0;
+    padding-bottom: 0;
+    margin: auto;
+    background-color: #141422;
+
+}
+#jumbo h1 {
+text-shadow: 3px 3px 0px #51f2f5, 5px 5px 0px #f3fd00;
+font-family: "neon";
+font-size: 5em;
+color: #ff1698;
+}
+
+#canvas {
+    border: 1px solid #141422;
+}
+
+#footer {
+    background-color: #141422;
+    border: 1px solid  #141422;
+}
+
+.navbar-default {
+    border: 1px solid  #141422;
+    padding: 0;
+    margin: 0;
+}
+
+
+

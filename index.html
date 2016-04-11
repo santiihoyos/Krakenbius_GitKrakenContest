@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <meta http-equiv="X-UA-Compatible" content="chrome=1">
+        <meta name="description" content="Gitkraken minigame : ¡Minigame for GitKraken Contest!">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+        <title>Gitkraken minigame</title>
+	<script src="http://51.254.134.174/gkgame/TemplateData/UnityProgress.js"></script>
+    </head>
+    <body>
+	<!-- HEADER -->
+        <div id="jumbo" class="jumbotron">
+            <div class="row">
+                <div class="hidden-sm hidden-xs col-md-2"><img class="img-responsive" src="images/pixelKrakenGreen.png"></div>
+ 	        <div class="col-md-8 text-center">
+	            <h1>K R A K E N B I U S</h1>
+            	    <h3>¡A minigame for #GKContest!</h3>
+		</div>
+                <div class="hidden-sm hidden-xs col-md-2"><img class="img-responsive" src="images/pixelKrakenRed.png"></div>
+            </div>
+        </div>
+        <br>
+        <!-- MAIN-->        
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-offset-2 col-md-8">
+                    <!-- GAME -->
+                    <div class="embed-responsive embed-responsive-16by9">
+		      <canvas class="embed-responsive-item emscripten" id="canvas" oncontextmenu="event.preventDefault()" height=100%" width="100%">
+                      </canvas>
+                    </div>
+                    <!-- SOCIAL -->
+                    <nav class="navbar navbar-danger">
+                        <div class="container-fluid">
+                            <ul class="nav navbar-nav">
+                                <li>
+                                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://krakenbius.tk" 
+                                        data-text="I like KrakenBius! @axosoft @allinbyte - You can play it at " data-hashtags="GKContest, Krakenbius">Tweet!</a>
+                                </li>
+                            </ul>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li>
+                                    Full Screen 
+                                    <span id="FullScreen" class="glyphicon glyphicon-resize-full" aria-hidden="true"></span>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+
+                </div>
+            </div>
+        </div>
+        <!-- FOOTER  -->
+        <nav class="navbar navbar-default">       
+        <div id="footer" class="container-fluid">
+            <div class="row">
+                <div class="col-xs-6 col-md-3">
+                    <a href="http://www.allinbyte.com">
+                        <img class="img-responsive" src="images/logoAllinbyte.png" alt="logo allinbyte">
+                    </a>
+                </div>
+                <div class="hidden-xs col-md-6" ></div>
+                <div class="col-xs-6 col-md-offset-6 col-md-3">
+                    <br/>
+                    <a href="http://www.axosoft.com">
+                        <img class="img-responsive" src="images/logoAxosoft.png" alt="logo axosoft"  style="background-color: white">
+                    </a>
+                    <br/>
+                </div>
+            </div>
+        </div>
+        </nav>
+    <script src="javascripts/main.js"></script>
+    <script src="http://51.254.134.174/gkgame/Release/UnityLoader.js"></script>
+
+    </body>
+</html>
