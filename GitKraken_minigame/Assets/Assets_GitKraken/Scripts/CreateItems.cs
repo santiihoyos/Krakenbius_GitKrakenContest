@@ -11,7 +11,7 @@ public class CreateItems : MonoBehaviour {
 	public GameObject item_merge;
 	public GameObject item_rebase;
 	float seconds;
-	int level;
+	public int level;
 
 	// Use this for initialization
 	void Start () {
