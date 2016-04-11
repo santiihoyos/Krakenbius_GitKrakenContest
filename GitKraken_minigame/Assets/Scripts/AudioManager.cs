@@ -28,7 +28,7 @@ public class AudioManager : MonoBehaviour {
         else if (SceneManager.GetActiveScene().name.Equals("GameScene"))
         {
             base_1.Play();
-            audioMixer.FindSnapshot("Base_1").TransitionTo(0.2f);
+            audioMixer.FindSnapshot("Base_1").TransitionTo(1f);
             createItems = GameObject.FindObjectOfType<CreateItems>();
         }
 	}
@@ -47,14 +47,14 @@ public class AudioManager : MonoBehaviour {
 
     void Update()
     {
-        if (!swapping && base_1.isPlaying && base_1.time >= base_1.clip.length - 3)
+        if (!swapping && base_1.isPlaying && base_1.time >= base_1.clip.length - 5*base_1.pitch)
         {
             StartCoroutine(SwapSongCoroutine());
         }
 
         if (createItems!=null)
         {
-            base_1.pitch = Mathf.Clamp(createItems.level * 0.01f + 1, 1, 1.3f);
+            base_1.pitch = Mathf.Clamp(createItems.level * 0.005f + 1, 1, 1.3f);
             base_2.pitch = base_1.pitch;
         }
     }
@@ -71,9 +71,9 @@ public class AudioManager : MonoBehaviour {
         float progress=0;
         while (progress<1)
         {
-            base_1.volume = Mathf.Lerp(base_1.volume, 0,progress);
-            base_2.volume = Mathf.Lerp(base_2.volume, initVolume, progress);
-            progress += Time.deltaTime/3;
+            base_1.volume = Mathf.Lerp(initVolume, 0,progress);
+            base_2.volume = Mathf.Lerp(0, initVolume, progress);
+            progress += Time.deltaTime/(5*base_1.pitch);
             yield return null;
         }
         AudioSource temp = base_1;
