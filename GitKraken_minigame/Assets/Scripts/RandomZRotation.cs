@@ -13,7 +13,7 @@ public class RandomZRotation : MonoBehaviour {
     void Start()
     {
         rotationSpeed = Random.Range(minRotationSpeed, maxRotationSpeed);
-        timeRotating = Random.Range(0,20f);
+        timeRotating = Random.Range(5,20f);
         StartCoroutine(ChangeRotation());
     }
 	
