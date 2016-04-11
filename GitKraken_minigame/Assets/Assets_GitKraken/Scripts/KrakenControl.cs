@@ -5,6 +5,8 @@ public class KrakenControl : MonoBehaviour {
 
 	public static int score;
 	GameObject kraken;
+	bool buttonLeft_pressed;
+	bool buttonRight_pressed;
 
 	// Use this for initialization
 	void Start () {
@@ -21,11 +23,19 @@ public class KrakenControl : MonoBehaviour {
 		}
 	}
 
-	public void RotateLeft() {		
+	public void ButtonLeft () {
+		
+	}
+
+	public void ButtonRight () {
+
+	}
+
+	void RotateLeft() {		
 		kraken.gameObject.transform.Rotate (Vector3.forward * 200f * Time.deltaTime);
 	}
 
-	public void RotateRight() {		
+	void RotateRight() {		
 		kraken.gameObject.transform.Rotate (Vector3.back * 200f * Time.deltaTime);
 	}
 }
