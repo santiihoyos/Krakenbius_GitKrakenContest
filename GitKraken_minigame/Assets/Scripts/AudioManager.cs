@@ -82,4 +82,18 @@ public class AudioManager : MonoBehaviour {
         base_2 = temp;
         swapping = false;
     }
+
+    public void pauseMusic()
+    {
+        base_1.Pause();
+        if (swapping)
+            base_2.Pause();
+    }
+
+    public void resumeMusic()
+    {
+        base_1.Play();
+        if (swapping)
+            base_2.Play();
+    }
 }
