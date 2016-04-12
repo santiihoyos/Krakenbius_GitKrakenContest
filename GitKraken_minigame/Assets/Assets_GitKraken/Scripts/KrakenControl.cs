@@ -14,7 +14,7 @@ public class KrakenControl : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		kraken = GameObject.Find ("Kraken");
-		score = 50000;
+		score = 0;
 		score_value.GetComponent<Text>().text = score.ToString();
 	}
 	
