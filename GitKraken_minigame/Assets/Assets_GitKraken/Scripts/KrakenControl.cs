@@ -20,7 +20,11 @@ public class KrakenControl : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) {
+		if (buttonLeft_pressed) {
+			RotateLeft ();
+		} else if (buttonRight_pressed) {
+			RotateRight ();
+		} else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) {
 			RotateLeft ();
 		} else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) {
 			RotateRight ();
@@ -28,12 +32,20 @@ public class KrakenControl : MonoBehaviour {
 		score_value.GetComponent<Text>().text = score.ToString();
 	}
 
-	public void ButtonLeft () {
-		
+	public void ButtonLeftDown () {
+		buttonLeft_pressed = true;
 	}
 
-	public void ButtonRight () {
+	public void ButtonRightDown () {
+		buttonRight_pressed = true;
+	}
 
+	public void ButtonLeftUp () {
+		buttonLeft_pressed = false;
+	}
+
+	public void ButtonRightUp () {
+		buttonRight_pressed = false;
 	}
 
 	void RotateLeft() {	

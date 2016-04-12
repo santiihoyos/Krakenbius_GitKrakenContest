@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class CreateItems : MonoBehaviour {
 
@@ -10,13 +11,20 @@ public class CreateItems : MonoBehaviour {
 	public GameObject item_pull;
 	public GameObject item_merge;
 	public GameObject item_rebase;
+	public GameObject version_value;
+
+	int version; // fase
+	int level; // level of fase
+	public static float speed;
 	float seconds;
-	public int level;
 
 	// Use this for initialization
 	void Start () {
+		version = 1;
+		level = 0;
+		speed = 1f;
 		seconds = 1f;
-		level = 1;
+		version_value.GetComponent<Text>().text = "v " + version.ToString() + "." + level.ToString();
 		StartCoroutine (GenerateItem());
 	}
 
@@ -40,14 +48,24 @@ public class CreateItems : MonoBehaviour {
 			else if (r >= 64 && r <= 100)
 				Instantiate (item_conflict);
 
-
-			if (krakenScripts.KrakenControl.score >= 200 * Mathf.Pow(2, level) && seconds > 0f) {
+			if (krakenScripts.KrakenControl.score >= ((version - 1) * 60000) + (100 * Mathf.Pow (2, level + 1)) && seconds > 0.1f) {
 				level++;
 				seconds -= 0.1f;
-				print ("Nuevo nivel!! Item cada " + seconds + " segundos");
+				version_value.GetComponent<Text>().text = "v " + version.ToString() + "." + level.ToString();
+				print ("Level Up!! Version = " + version + ", Level = " + level + ", Speed = " + speed + ", Seconds = " + seconds);
+			}
+			if(krakenScripts.KrakenControl.score > ((version) * 60000)){
+				NextLevel ();
 			}
 
 			yield return new WaitForSeconds (seconds);
 		}
+	}
+
+	void NextLevel () {
+		version ++;
+		level = 1;
+		speed += 0.1f;
+		seconds = 1f;
 	}
 }

@@ -55,7 +55,7 @@ public class AudioManager : MonoBehaviour {
 
         if (createItems!=null)
         {
-            base_1.pitch = Mathf.Clamp(createItems.level * 0.005f + 1, 1, 1.3f);
+            //base_1.pitch = Mathf.Clamp(createItems.level * 0.005f + 1, 1, 1.3f);
             base_2.pitch = base_1.pitch;
         }
     }

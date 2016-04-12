@@ -16,6 +16,8 @@ public class ItemControl : MonoBehaviour {
 
 	// Use this for initialization
 	public void Start () {
+		speed = CreateItems.speed;
+
 		float r = Random.Range(0f, 360f);
 		this.transform.position = new Vector3 (Mathf.Sqrt (50), 0, 0);
 		this.transform.RotateAround(new Vector3(0,0,0), Vector3.forward, r);
