@@ -1,11 +1,10 @@
 # Krakenbius Game!
 
 ¡Minigame for GitKraken Contest! 
-
-![alt tag](http://krakenbius.tk)
+http://krakenbius.tk
 
 Now aviable on Play Store:
-![alt tag](https://play.google.com/store/apps/details?id=com.Allinbyte.Krakenbius)
+https://play.google.com/store/apps/details?id=com.Allinbyte.Krakenbius
 
 v1.0 - It's here!
 
