@@ -10,13 +10,19 @@ public class KrakenControl : MonoBehaviour {
 	public GameObject score_value;
 	bool buttonLeft_pressed;
 	bool buttonRight_pressed;
+        public Animator touchAnimator;
 
 	// Use this for initialization
 	void Start () {
 		kraken = GameObject.Find ("Kraken");
 		score = 0;
 		score_value.GetComponent<Text>().text = score.ToString();
-	}
+#if UNITY_ANDROID && !UNITY_EDITOR
+            touchAnimator.enabled = true;
+#else
+            touchAnimator.enabled = false;
+#endif
+        }
 	
 	// Update is called once per frame
 	void Update () {
