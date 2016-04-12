@@ -12,6 +12,7 @@ public class CreateItems : MonoBehaviour {
 	public GameObject item_merge;
 	public GameObject item_rebase;
 	public GameObject version_value;
+    public GameObject nextVersionEffectPrefab;
 
 	public int version; // fase
 	public int level; // level of fase
@@ -55,17 +56,18 @@ public class CreateItems : MonoBehaviour {
 				print ("Level Up!! Version = " + version + ", Level = " + level + ", Speed = " + speed + ", Seconds = " + seconds);
 			}
 			if(krakenScripts.KrakenControl.score > ((version) * 60000)){
-				NextLevel ();
+				NextVersion ();
 			}
 
 			yield return new WaitForSeconds (seconds);
 		}
 	}
 
-	void NextLevel () {
+	void NextVersion () {
 		version ++;
 		level = 1;
 		speed += 0.1f;
 		seconds = 1f;
+        Instantiate(nextVersionEffectPrefab, transform.position + new Vector3(0, -3, -1), Quaternion.identity);
 	}
 }

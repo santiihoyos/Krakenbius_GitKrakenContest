@@ -75,12 +75,17 @@ public class AudioManager : MonoBehaviour {
             {
                 Version = createItems.version;
             }
+
+            if (version!=createItems.version)
+            {
+                Version = createItems.version;
+            }
         }
     }
 
     public void SwapSong()
     {
-        if (!swapping && base_1.isPlaying && base_1.time >= base_1.clip.length - 1 * base_1.pitch)
+        if (!swapping && base_1.isPlaying)
         {
             StartCoroutine(SwapSongCoroutine());
         }
