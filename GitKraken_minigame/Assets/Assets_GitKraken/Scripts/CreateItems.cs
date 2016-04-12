@@ -13,8 +13,8 @@ public class CreateItems : MonoBehaviour {
 	public GameObject item_rebase;
 	public GameObject version_value;
 
-	int version; // fase
-	int level; // level of fase
+	public int version; // fase
+	public int level; // level of fase
 	public static float speed;
 	float seconds;
 
