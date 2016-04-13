@@ -14,9 +14,20 @@ public class MenuPanelController : MonoBehaviour {
     public GameObject rankingPanel;
     public GameObject titlePanel;
 
+    public GameObject exitButton;
+    public GameObject twitterButton;
+    public GameObject confirmExitPanel;
+
     [Header("AudioManager")]
     public AudioManager audioManager;
 
+#if !UNITY_ANDROID
+    void Start()
+    {
+        exitButton.SetActive(false);
+        twitterButton.SetActive(false);
+    }
+#endif
     //*********************************************** BUTTON RETURN MAIN MENU *****************************************************
     public void HomeButton() 
 	{
@@ -66,5 +77,25 @@ public class MenuPanelController : MonoBehaviour {
         ((AudioSource)GameObject.Find("Mouse_Effect").GetComponent<AudioSource>()).Play();
         rankingPanel.SetActive(!rankingPanel.activeInHierarchy);
         titlePanel.SetActive(!titlePanel.activeInHierarchy);
+    }
+
+    public void ExitButton()
+    {
+        confirmExitPanel.SetActive(true);
+    }
+
+    public void ConfirmExit()
+    {
+        Application.Quit();
+    }
+
+    public void CancelExit()
+    {
+        confirmExitPanel.SetActive(false);
+    }
+
+    public void GoToTwitter()
+    {
+        Application.OpenURL("https://twitter.com/allinbyte/status/719536813896019968");
     }
 }
