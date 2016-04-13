@@ -1,0 +1,5 @@
+-- reset estadisticas
+UPDATE `GITKRAKEN_DB`.`ESTADISTICAS` SET `CANTIDAD`='0' WHERE `NOMBRE`='PARTIDAS';
+
+-- Reset Ranking
+UPDATE `GITKRAKEN_DB`.`RANKING` SET `NICK`='---------', `SCORE`='0' WHERE `ID`>100;
