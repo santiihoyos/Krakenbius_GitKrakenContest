@@ -13,6 +13,7 @@ public class CreateItems : MonoBehaviour {
 	public GameObject item_rebase;
 	public GameObject version_value;
     public GameObject nextVersionEffectPrefab;
+	public GameObject rebaseDummyEffectPrefab;
 
 	public int version; // fase
 	public int level; // level of fase
@@ -49,14 +50,17 @@ public class CreateItems : MonoBehaviour {
 			else if (r >= 64 && r <= 100)
 				Instantiate (item_conflict);
 
-			if (krakenScripts.KrakenControl.score >= ((version - 1) * 60000) + (100 * Mathf.Pow (2, level + 1)) && seconds > 0.1f) {
+			if (krakenScripts.KrakenControl.score >= ((version - 1) * (500 * Mathf.Pow (1.5f, 10))) + (500 * Mathf.Pow (1.5f, level + 1))) {
 				level++;
-				seconds -= 0.1f;
-				version_value.GetComponent<Text>().text = "v " + version.ToString() + "." + level.ToString();
+
+				if (level == 10) {
+					NextVersion ();
+				} 
+				else {
+					seconds -= 0.1f;
+				}
+				version_value.GetComponent<Text> ().text = "v " + version.ToString () + "." + level.ToString ();
 				print ("Level Up!! Version = " + version + ", Level = " + level + ", Speed = " + speed + ", Seconds = " + seconds);
-			}
-			if(krakenScripts.KrakenControl.score > ((version) * 60000)){
-				NextVersion ();
 			}
 
 			yield return new WaitForSeconds (seconds);
@@ -65,9 +69,20 @@ public class CreateItems : MonoBehaviour {
 
 	void NextVersion () {
 		version ++;
-		level = 1;
-		speed += 0.1f;
+		level = 0;
+		speed += 0.2f;
 		seconds = 1f;
+		ItemControl[] items = GameObject.FindObjectsOfType<ItemControl> ();
+		for (int i = items.Length - 1; i >= 0; i--) {
+			if (items[i].gameObject.tag == "Rebase") 
+			{
+				Instantiate (rebaseDummyEffectPrefab, items[i].transform.position, Quaternion.identity);
+			} 
+			else {
+				items[i].Explosion ();
+			}
+			Destroy (items [i].gameObject);
+		}
         Instantiate(nextVersionEffectPrefab, transform.position + new Vector3(0, -3, -1), Quaternion.identity);
 	}
 }
