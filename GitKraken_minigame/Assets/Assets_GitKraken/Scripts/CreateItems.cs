@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class CreateItems : MonoBehaviour {
 
@@ -10,13 +11,22 @@ public class CreateItems : MonoBehaviour {
 	public GameObject item_pull;
 	public GameObject item_merge;
 	public GameObject item_rebase;
+	public GameObject version_value;
+    public GameObject nextVersionEffectPrefab;
+	public GameObject rebaseDummyEffectPrefab;
+
+	public int version; // fase
+	public int level; // level of fase
+	public static float speed;
 	float seconds;
-	public int level;
 
 	// Use this for initialization
 	void Start () {
+		version = 1;
+		level = 0;
+		speed = 1f;
 		seconds = 1f;
-		level = 1;
+		version_value.GetComponent<Text>().text = "v " + version.ToString() + "." + level.ToString();
 		StartCoroutine (GenerateItem());
 	}
 
@@ -40,14 +50,39 @@ public class CreateItems : MonoBehaviour {
 			else if (r >= 64 && r <= 100)
 				Instantiate (item_conflict);
 
-
-			if (krakenScripts.KrakenControl.score >= 200 * Mathf.Pow(2, level) && seconds > 0f) {
+			if (krakenScripts.KrakenControl.score >= ((version - 1) * (500 * Mathf.Pow (1.5f, 10))) + (500 * Mathf.Pow (1.5f, level + 1))) {
 				level++;
-				seconds -= 0.1f;
-				print ("Nuevo nivel!! Item cada " + seconds + " segundos");
+
+				if (level == 10) {
+					NextVersion ();
+				} 
+				else {
+					seconds -= 0.1f;
+				}
+				version_value.GetComponent<Text> ().text = "v " + version.ToString () + "." + level.ToString ();
+				print ("Level Up!! Version = " + version + ", Level = " + level + ", Speed = " + speed + ", Seconds = " + seconds);
 			}
 
 			yield return new WaitForSeconds (seconds);
 		}
+	}
+
+	void NextVersion () {
+		version ++;
+		level = 0;
+		speed += 0.2f;
+		seconds = 1f;
+		ItemControl[] items = GameObject.FindObjectsOfType<ItemControl> ();
+		for (int i = items.Length - 1; i >= 0; i--) {
+			if (items[i].gameObject.tag == "Rebase") 
+			{
+				Instantiate (rebaseDummyEffectPrefab, items[i].transform.position, Quaternion.identity);
+			} 
+			else {
+				items[i].Explosion ();
+			}
+			Destroy (items [i].gameObject);
+		}
+        Instantiate(nextVersionEffectPrefab, transform.position + new Vector3(0, -3, -1), Quaternion.identity);
 	}
 }

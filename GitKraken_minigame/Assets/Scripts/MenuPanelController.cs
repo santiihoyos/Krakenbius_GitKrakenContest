@@ -9,13 +9,25 @@ public class MenuPanelController : MonoBehaviour {
 	public GameObject mainPanel;
 	public GameObject settingsPanel;
 	public GameObject creditsPanel;
+    public GameObject manPanel;
 
     public GameObject rankingPanel;
     public GameObject titlePanel;
 
+    public GameObject exitButton;
+    public GameObject twitterButton;
+    public GameObject confirmExitPanel;
+
     [Header("AudioManager")]
     public AudioManager audioManager;
 
+#if !UNITY_ANDROID
+    void Start()
+    {
+        exitButton.SetActive(false);
+        twitterButton.SetActive(false);
+    }
+#endif
     //*********************************************** BUTTON RETURN MAIN MENU *****************************************************
     public void HomeButton() 
 	{
@@ -23,6 +35,7 @@ public class MenuPanelController : MonoBehaviour {
         mainPanel.SetActive(true);
 		settingsPanel.SetActive(false);
         creditsPanel.SetActive(false);
+        manPanel.SetActive(false);
     }
 
 	//*********************************************** BUTTONS MAIN MENU *****************************************************
@@ -32,6 +45,7 @@ public class MenuPanelController : MonoBehaviour {
         mainPanel.SetActive(false);
         settingsPanel.SetActive(true);
         creditsPanel.SetActive(false);
+        manPanel.SetActive(false);
     }
 
 	public void CreditsButton () 
@@ -40,6 +54,15 @@ public class MenuPanelController : MonoBehaviour {
         mainPanel.SetActive(false);
         settingsPanel.SetActive(false);
         creditsPanel.SetActive(true);
+        manPanel.SetActive(false);
+    }
+    public void ManButton()
+    {
+        ((AudioSource)GameObject.Find("Mouse_Effect").GetComponent<AudioSource>()).Play();
+        mainPanel.SetActive(false);
+        settingsPanel.SetActive(false);
+        creditsPanel.SetActive(false);
+        manPanel.SetActive(true);
     }
 
     public void PlayButton()
@@ -54,5 +77,25 @@ public class MenuPanelController : MonoBehaviour {
         ((AudioSource)GameObject.Find("Mouse_Effect").GetComponent<AudioSource>()).Play();
         rankingPanel.SetActive(!rankingPanel.activeInHierarchy);
         titlePanel.SetActive(!titlePanel.activeInHierarchy);
+    }
+
+    public void ExitButton()
+    {
+        confirmExitPanel.SetActive(true);
+    }
+
+    public void ConfirmExit()
+    {
+        Application.Quit();
+    }
+
+    public void CancelExit()
+    {
+        confirmExitPanel.SetActive(false);
+    }
+
+    public void GoToTwitter()
+    {
+        Application.OpenURL("https://twitter.com/allinbyte/status/719536813896019968");
     }
 }

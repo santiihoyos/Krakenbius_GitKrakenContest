@@ -65,9 +65,8 @@ public class TentacleControl : MonoBehaviour {
 
 		} else if (tentagle_collision == "Push") { // Green
 			float calc_height = (this.transform.parent.localScale.y - 1f) * 10;
-			float calc_width = (this.transform.parent.localScale.x - 1f) * 10;
 
-			krakenScripts.KrakenControl.score += 200 + (scoreIncrement * (int) calc_height) + (scoreIncrement * (int) calc_width);
+			krakenScripts.KrakenControl.score += 200 + (scoreIncrement * (int) calc_height);
 			this.transform.parent.localScale = new Vector3 (this.transform.parent.localScale.x, 1, 1);
 
 		} else if (tentagle_collision == "Rebase") { // White
