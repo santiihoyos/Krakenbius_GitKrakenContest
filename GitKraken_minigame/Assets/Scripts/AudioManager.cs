@@ -14,6 +14,24 @@ public class AudioManager : MonoBehaviour {
     public AudioMixer audioMixer;
     private CreateItems createItems;
 
+    bool swapping = false;
+
+    private int version;
+
+    public int Version
+    {
+        get
+        {
+            return version;
+        }
+
+        set
+        {
+            version = value;
+            SwapSong();
+        }
+    }
+
     void Awake()
     {
         initVolume = base_1.volume;
@@ -48,19 +66,31 @@ public class AudioManager : MonoBehaviour {
 
     void Update()
     {
-        if (!swapping && base_1.isPlaying && base_1.time >= base_1.clip.length - 5*base_1.pitch)
-        {
-            StartCoroutine(SwapSongCoroutine());
-        }
-
         if (createItems!=null)
         {
             base_1.pitch = Mathf.Clamp(createItems.level * 0.005f + 1, 1, 1.3f);
             base_2.pitch = base_1.pitch;
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                Version = createItems.version;
+            }
+
+            if (version!=createItems.version)
+            {
+                Version = createItems.version;
+            }
         }
     }
-    
-    bool swapping = false;
+
+    public void SwapSong()
+    {
+        if (!swapping && base_1.isPlaying)
+        {
+            StartCoroutine(SwapSongCoroutine());
+        }
+    }
+
     IEnumerator SwapSongCoroutine()
     {
         audioIndex++;
@@ -74,7 +104,7 @@ public class AudioManager : MonoBehaviour {
         {
             base_1.volume = Mathf.Lerp(initVolume, 0,progress);
             base_2.volume = Mathf.Lerp(0, initVolume, progress);
-            progress += Time.deltaTime/(5*base_1.pitch);
+            progress += Time.deltaTime/(1*base_1.pitch);
             yield return null;
         }
         AudioSource temp = base_1;

@@ -16,6 +16,8 @@ public class ItemControl : MonoBehaviour {
 
 	// Use this for initialization
 	public void Start () {
+		speed = CreateItems.speed;
+
 		float r = Random.Range(0f, 360f);
 		this.transform.position = new Vector3 (Mathf.Sqrt (50), 0, 0);
 		this.transform.RotateAround(new Vector3(0,0,0), Vector3.forward, r);
@@ -47,11 +49,15 @@ public class ItemControl : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D coll) {
 
 		if (this.transform.gameObject.tag == "Rebase") {
-			Instantiate (effect, kraken.transform.position + new Vector3(0, 3.5f, 1f), Quaternion.identity);
+			Instantiate (effect, kraken.transform.position + new Vector3 (0, 3.5f, 1f), Quaternion.identity);
 		} else {
-			Instantiate (effect, this.transform.position, Quaternion.identity);
+			Explosion ();
 		}
 
 		Destroy (this.gameObject);
+	}
+
+	public void Explosion() {
+		Instantiate (effect, this.transform.position, Quaternion.identity);
 	}
 }
