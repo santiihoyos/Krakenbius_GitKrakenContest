@@ -7,6 +7,8 @@ public class HUDPanelController : MonoBehaviour {
 	bool isPaused = false;
 	GameObject pausePanel;
     GameObject gameOverPanel;
+    GameObject captionPanel;
+    GameObject pauseButton;
 
     // Use this for initialization
     void Start () {
@@ -14,6 +16,9 @@ public class HUDPanelController : MonoBehaviour {
 		pausePanel.SetActive(false);
         gameOverPanel = GameObject.Find("PanelGameOver");
         gameOverPanel.SetActive(false);
+        captionPanel = GameObject.Find("Caption_Panel");
+        captionPanel.SetActive(false);
+        pauseButton = GameObject.Find("Pause_Button");
     }
 
     // Update is called once per frame
@@ -28,11 +33,15 @@ public class HUDPanelController : MonoBehaviour {
 			Time.timeScale = 1;
 			isPaused = false;
 			pausePanel.SetActive(false);
+            pauseButton.SetActive(true);
+            captionPanel.SetActive(false);
             GameObject.FindObjectOfType<AudioManager>().resumeMusic();
 		} else {
 			Time.timeScale = 0;
 			isPaused = true;
 			pausePanel.SetActive(true);
+            pauseButton.SetActive(false);
+            captionPanel.SetActive(true);
             GameObject.FindObjectOfType<AudioManager>().pauseMusic();
         }
     }
