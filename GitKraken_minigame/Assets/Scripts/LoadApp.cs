@@ -8,7 +8,7 @@ using UnityEngine.Audio;
 public class LoadApp : MonoBehaviour {
 
     public AudioMixer audioMixer;
-    string AndroidPublisherKey= "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxOxZykNeqUMbgIZ+qSGKqHrTxn44cGm5xCshkgUdO6en6vbJLCl1a8K1K4WEzY8TPFdNDGMrWiQ2FY271ywVfd1+c8CSat2zdfqPPpJinqOrpsiwNa3HgcX+XjIPK+M15KjQyAStbr5mufMMg2bJ9m4EZ0uiVs1AGmdOZ/6vFxSJ5xH0N7y7aac7U79PjgvMxNhAZytux+CLXHJ+oakCBELY0WoyhUnGaCZlk9CIsB5AbqhtlJJqOJ5IfVGOT3Fz+Q217Uu6aJXQYHAqkbG1SbDWxTzV2MpmT51KaY61DhE1oVxhHok+gr9h0aca/4SPuCTPRF5Ewptuk2H104DsJQIDAQAB";
+    string AndroidPublisherKey= "baf254c1-b248-44bc-b098-0499d3b7891f";
     string iOSPublisherKey;
 
     // Use this for initialization
