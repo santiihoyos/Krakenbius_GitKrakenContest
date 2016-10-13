@@ -4,6 +4,9 @@ using UnityEngine.SceneManagement;
 
 public class HUDPanelController : MonoBehaviour {
 
+	[Header("Unity Ads Controller")]
+	public UnityAdsController UnityAdsController;
+
 	bool isPaused = false;
 	GameObject pausePanel;
     GameObject gameOverPanel;
@@ -56,6 +59,9 @@ public class HUDPanelController : MonoBehaviour {
     public void GameOver()
     {
         gameOverPanel.SetActive(true);
+		//Show Adv
+		Debug.Log("Show Adv");
+		UnityAdsController.ShowRewardedAd();
     }
 
     public void Restart()

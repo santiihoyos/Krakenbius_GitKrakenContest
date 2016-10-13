@@ -3,7 +3,6 @@ using System.Collections;
 using SimpleJson;
 using models;
 using UnityEngine.UI;
-using UnityEngine.Experimental.Networking;
 
 public class RankingManager : MonoBehaviour {
 
@@ -18,7 +17,7 @@ public class RankingManager : MonoBehaviour {
 
 	IEnumerator LoadRanking() {
 
-		UnityWebRequest www = UnityWebRequest.Get("http://51.254.134.174/webservices/gitkraken/ranking/LoadRanking.php");
+		UnityEngine.Networking.UnityWebRequest www = UnityEngine.Networking.UnityWebRequest.Get("http://51.254.134.174/webservices/gitkraken/ranking/LoadRanking.php");
 		yield return www.Send();
 
 		if(www.isError) {
@@ -63,7 +62,7 @@ public class RankingManager : MonoBehaviour {
 		WWWForm formulario = new WWWForm ();
 		formulario.AddField ("score_player", krakenScripts.KrakenControl.score);
 
-		UnityWebRequest www = UnityWebRequest.Post("http://51.254.134.174/webservices/gitkraken/ranking/CheckInRanking.php",formulario);
+		UnityEngine.Networking.UnityWebRequest www = UnityEngine.Networking.UnityWebRequest.Post("http://51.254.134.174/webservices/gitkraken/ranking/CheckInRanking.php",formulario);
 
 		yield return www.Send();
 
@@ -96,7 +95,7 @@ public class RankingManager : MonoBehaviour {
 		formulario.AddField ("nick_player", nick);
 		formulario.AddField ("score_player", krakenScripts.KrakenControl.score);
 
-		UnityWebRequest www = UnityWebRequest.Post("http://51.254.134.174/webservices/gitkraken/ranking/UpdateRanking.php",formulario);
+		UnityEngine.Networking.UnityWebRequest www = UnityEngine.Networking.UnityWebRequest.Post("http://51.254.134.174/webservices/gitkraken/ranking/UpdateRanking.php",formulario);
 
 		yield return www.Send();
 
