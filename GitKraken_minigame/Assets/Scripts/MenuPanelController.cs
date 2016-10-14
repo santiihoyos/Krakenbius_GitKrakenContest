@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEngine.Analytics;
 
 public class MenuPanelController : MonoBehaviour {
 
@@ -17,9 +18,13 @@ public class MenuPanelController : MonoBehaviour {
     public GameObject exitButton;
     public GameObject twitterButton;
     public GameObject confirmExitPanel;
+	public GameObject deleteAdsPanel;
 
     [Header("AudioManager")]
     public AudioManager audioManager;
+
+	[Header("External Methods")]
+	public Purchaser purchaser;
 
 #if !UNITY_ANDROID
     void Start()
@@ -98,4 +103,22 @@ public class MenuPanelController : MonoBehaviour {
     {
         Application.OpenURL("https://twitter.com/allinbyte/status/719536813896019968");
     }
+
+	public void showDeleteAdsPanel()
+	{
+		deleteAdsPanel.SetActive (true);
+	}
+
+	public void hideDeleteAdsPanel()
+	{
+		deleteAdsPanel.SetActive (false);
+	}
+
+	public void DeleteAdsConfirmation()
+	{
+		//Add IAP Delete Ads
+		purchaser.BuyNonConsumable();
+		
+		hideDeleteAdsPanel();
+	}
 }
